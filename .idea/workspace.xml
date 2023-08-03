@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51970b2d-d4e7-4308-9bff-4a5124cdd2b7" name="Changes" comment="" />
+    <list default="true" id="51970b2d-d4e7-4308-9bff-4a5124cdd2b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/mysite/myapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
