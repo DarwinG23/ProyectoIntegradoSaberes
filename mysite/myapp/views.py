@@ -2,8 +2,25 @@ from django.shortcuts import render
 from .forms import *  #importa todos los formularios
 from .models import *  #importa todos los modelos
 from django.shortcuts import redirect
+from django.contrib.auth import login
+
 
 # Create your views here.
+def registro(request):
+    if request.method == 'POST':
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_superuser = False  # Establece como usuario común
+            user.save()
+            login(request, user)
+            return redirect('nombre_de_la_vista')
+    else:
+        form = RegistroForm()
+    return render(request, 'registro.html', {'form': form})
+
+
+
 def menu(request):
     return render(request, 'menu.html')
 
@@ -60,4 +77,29 @@ def crearDepo(request):
         return redirect('crearTemp')
 
 
+def crearEqui(request):
+    if request.method == 'GET':
+        return render(request, 'crearEqui.html', {'form': EquipoForm()})
+    else:
+        form = EquipoForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            descripcion = form.cleaned_data['descripcion']
+            temporada = form.cleaned_data['temporada']
+            deporte = form.cleaned_data['deporte']
+            Equipo.objects.create(nombre=nombre, descripcion=descripcion, temporada=temporada, deporte=deporte)
+            return redirect('crearEqui')
 
+
+
+def crearCompetidor(request):
+    if request.method == 'GET':
+        return render(request, 'crearCompetidor.html', {'form': CompetidorForm()})
+    else:
+        form = CompetidorForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            equipo = form.cleaned_data['equipo']
+            temporada = form.cleaned_data['temporada']
+            Competidor.objects.create(nombre=nombre, equipo=equipo, temporada=temporada)
+            return redirect('crearJug')

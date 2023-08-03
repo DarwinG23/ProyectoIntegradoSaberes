@@ -8,5 +8,8 @@ admin.site.register(Competencia)
 admin.site.register(Temporada)
 admin.site.register(Modalidad)
 admin.site.register(Deporte)
+admin.site.register(Equipo)
+admin.site.register(Grupo)
+admin.site.register(Competidor)
 
 

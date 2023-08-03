@@ -1,5 +1,7 @@
 import django.forms as forms
 from .models import *
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 
@@ -28,3 +30,28 @@ class DeporteForm(forms.Form):
     cantidadEquipos = forms.IntegerField(label="Cantidad de equipos", required=False)
     cantidadTiempos = forms.IntegerField(label="Cantidad de tiempos", required=False)
     temporada = forms.ModelChoiceField(queryset=Temporada.objects.all(), empty_label=None, label="Temporada")
+
+class EquipoForm(forms.Form):
+    nombre = forms.CharField(label="Nombre", max_length=100, required=True)
+    descripcion = forms.CharField(label="Descripcion", max_length=200, required=False)
+    temporada = forms.ModelChoiceField(queryset=Temporada.objects.all(), empty_label=None, label="Temporada")
+    deporte = forms.ModelChoiceField(queryset=Deporte.objects.all(), empty_label=None, label="Deporte", required=False)
+
+
+class CompetidorForm(forms.Form):
+    nombre = forms.CharField(label="Nombre", max_length=100, required=True)
+    equipo = forms.ModelChoiceField(queryset=Equipo.objects.all(), empty_label=None, label="Equipo", required=False)
+    temporada = forms.ModelChoiceField(queryset=Temporada.objects.all(), empty_label=None, label="Temporada", required=False)
+
+
+
+
+
+
+
+class RegistroForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
