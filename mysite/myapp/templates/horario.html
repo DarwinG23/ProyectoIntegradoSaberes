@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+       {% for horario in horarios  %}
+         <h1>{{ horario.nombre }}</h1>
+            <p>NUMERO DE CANCHAS: {{ horario.numCanchas }}</p>
+             <ul>
+                {% for partido in horario.partido_set.all %}
+                <li>Fecha: {{ partido.numFecha }} ||| {{ partido.equipo_local }} |||    vs  |||   {{ partido.equipo_visitante }} ||| Cancha: {{ partido.cancha }} </li>
+                {% endfor %}
+             </ul>
+       {% endfor %}
+{% endblock %}

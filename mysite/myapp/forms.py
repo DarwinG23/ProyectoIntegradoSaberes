@@ -44,9 +44,13 @@ class CompetidorForm(forms.Form):
     temporada = forms.ModelChoiceField(queryset=Temporada.objects.all(), empty_label=None, label="Temporada", required=False)
 
 
+class HorarioForm(forms.Form):
+    nombre = forms.CharField(label="Nombre", max_length=100, required=True)
+    numCanchas = forms.IntegerField(label="Numero de Canchas", min_value=1, max_value=50, required=True)
 
 
-
+class GrupoForm(forms.Form):
+    numGrupos = forms.IntegerField(label="Numero de Grupos", min_value=1, max_value=50, required=True)
 
 
 class RegistroForm(UserCreationForm):

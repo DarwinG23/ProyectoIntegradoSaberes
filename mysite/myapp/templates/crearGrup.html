@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Creación de Grupos</h1>
+    <h2>Lista de equipos inscritos</h2>
+    <ol>
+        {% for equipo in equipos %}
+            <li>{{equipo.nombre}}</li>
+        {% endfor %}
+    </ol>
+    <form method="POST">
+     {% csrf_token %}
+     {{form.as_p}}
+        <button>
+          Generar
+        </button>
+    </form>
+
+{% endblock %}

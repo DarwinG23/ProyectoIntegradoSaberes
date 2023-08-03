@@ -66,10 +66,10 @@ def crearDepo(request):
             nombre = form.cleaned_data['nombre']
             descripcion = form.cleaned_data['descripcion']
             esPorEquipos = form.cleaned_data['esPorEquipos']
-            esPorPuntos =  form.cleaned_data['esPorPuntos']
-            cantidadJugadores =  form.cleaned_data['cantidadJugadores']
-            puntosLimite =  form.cleaned_data['puntosLimite']
-            duracionPartido =  form.cleaned_data['duracionPartido']
+            esPorPuntos = form.cleaned_data['esPorPuntos']
+            cantidadJugadores = form.cleaned_data['cantidadJugadores']
+            puntosLimite = form.cleaned_data['puntosLimite']
+            duracionPartido = form.cleaned_data['duracionPartido']
             cantidadEquipos = form.cleaned_data['cantidadEquipos']
             cantidadTiempos = form.cleaned_data['cantidadTiempos']
             temporada = form.cleaned_data['temporada']
@@ -103,3 +103,40 @@ def crearCompetidor(request):
             temporada = form.cleaned_data['temporada']
             Competidor.objects.create(nombre=nombre, equipo=equipo, temporada=temporada)
             return redirect('crearJug')
+
+
+def crearHorario(request):
+    equipos = Equipo.objects.all()
+    grupos = Grupo.objects.all()
+    if request.method == 'GET':
+        return render(request, 'crearHorario.html', {'form': HorarioForm(), 'equipos': equipos, 'grupos': grupos})
+    else:
+        form = HorarioForm(request.POST)
+        if form.is_valid():
+            nombreHorario = form.cleaned_data['nombre']
+            numCanchas = form.cleaned_data['numCanchas']
+            grupo = grupos.first()
+            grupo.generar_Partidos()
+            grupo.generar_horario(numCanchas, nombreHorario)
+            return redirect('/Horario')
+
+
+def crearGrup(request):
+    # obtiene los equipos de la base de datos
+    equipos = Equipo.objects.all()
+    if request.method == 'GET':
+        return render(request, 'crearGrup.html', {'form': GrupoForm(), 'equipos': equipos})
+    else:
+        form = GrupoForm(request.POST)
+        if form.is_valid():
+            num_grupos = form.cleaned_data['numGrupos']
+            # Generar grupos solo si el número de grupos es mayor a cero
+            if num_grupos > 0:
+                equipo = equipos.first()
+                equipo.generar_Grupos(num_grupos)
+            return redirect('crearGrup')
+
+
+def verHorario(request):
+    horarios = Horario.objects.all()
+    return render(request, 'Horario.html', {'horarios': horarios})

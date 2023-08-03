@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>HORARIO</h1>
+    <h2>Lista de equipos</h2>
+    <ul>
+        {% for equipo in equipos %}
+            <li>{{ equipo.nombre }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Lista de grupos</h2>
+    <ul>
+        {% for grupo in grupos %}
+            <li>{{ grupo.nombre }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Ingrese los datos para el horario</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>
+          crear
+        </button>
+    </form>
+{% endblock %}
+```
