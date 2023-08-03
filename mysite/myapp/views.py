@@ -34,8 +34,30 @@ def crearTemp(request):
             fechaInicio = form.cleaned_data['fechaInicio']
             fechaFin = form.cleaned_data['fechaFin']
             competencia = form.cleaned_data['competencia']
-            Temporada.objects.create(nombre=nombre, descripcion=descripcion, fechaInicio=fechaInicio, fechaFin=fechaFin, competencia=competencia)
+            modalidad = form.cleaned_data['modalidad']
+            deportes = form.cleaned_data['deportes']
+            Temporada.objects.create(nombre=nombre, descripcion=descripcion, fechaInicio=fechaInicio, fechaFin=fechaFin, competencia=competencia, modalidad=modalidad, deportes=deportes)
    return redirect('crearTemp')
+
+
+def crearDepo(request):
+    if request.method == 'GET':
+        return render(request, 'crearDepo.html', {'form': DeporteForm()})
+    else:
+        form = DeporteForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            descripcion = form.cleaned_data['descripcion']
+            esPorEquipos = form.cleaned_data['esPorEquipos']
+            esPorPuntos =  form.cleaned_data['esPorPuntos']
+            cantidadJugadores =  form.cleaned_data['cantidadJugadores']
+            puntosLimite =  form.cleaned_data['puntosLimite']
+            duracionPartido =  form.cleaned_data['duracionPartido']
+            cantidadEquipos = form.cleaned_data['cantidadEquipos']
+            cantidadTiempos = form.cleaned_data['cantidadTiempos']
+            temporada = form.cleaned_data['temporada']
+            Deporte.objects.create(nombre=nombre, descripcion=descripcion, esPorEquipos=esPorEquipos, esPorPuntos=esPorPuntos, cantidadJugadores=cantidadJugadores, puntosLimite=puntosLimite, duracionPartido=duracionPartido, cantidadEquipos=cantidadEquipos, cantidadTiempos=cantidadTiempos, temporada=temporada)
+        return redirect('crearTemp')
 
 
 

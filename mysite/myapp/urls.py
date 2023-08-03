@@ -7,4 +7,5 @@ urlpatterns = [
     path('crearComp/', views.crearComp, name='crearComp'),
     path('crearTemp/', views.crearTemp, name='crearTemp'),
     path('inicioSecion/', views.inicioSecion, name='inicioSecion'),
+    path('crearDepo/', views.crearDepo, name='crearDepo'),
 ]
