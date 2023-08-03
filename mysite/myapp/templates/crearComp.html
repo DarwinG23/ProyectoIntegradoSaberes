@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% load static  %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <h1>Competencias</h1>
+    <p> Ingrese los datos de la competencia</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Si no hay temporadas por favor cree una para la competencia</p>
+        {{ form2.as_p }}
+           <button> Crear Copetencia </button>
+    </form>
+{% endblock %}
+```
