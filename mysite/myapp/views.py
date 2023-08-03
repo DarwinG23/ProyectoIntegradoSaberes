@@ -4,6 +4,13 @@ from .models import *  #importa todos los modelos
 from django.shortcuts import redirect
 
 # Create your views here.
+def menu(request):
+    return render(request, 'menu.html')
+
+
+def inicioSecion(request):
+    return render(request, 'inicioSecion.html')
+
 def crearComp(request):
     if request.method == 'GET':
         return render(request, 'crearComp.html', {'form': CompetenciaForm()})
