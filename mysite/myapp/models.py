@@ -20,3 +20,19 @@ class Temporada(models.Model):
 
     def __str__(self):
         return self.nombre + " - " + self.competencia.nombre
+
+
+class Modalidad(models.Model):
+
+    #Atributos
+    tipoModalidad = models.CharField(max_length=50)
+
+    #Relaciones
+    temporada = models.ForeignKey(Temporada, on_delete=models.CASCADE, null=False, blank=False)
+
+
+    def __str__(self):
+        return self.tipoModalidad
+
+
+
