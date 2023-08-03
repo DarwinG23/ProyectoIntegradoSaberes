@@ -26,7 +26,7 @@ def menu(request):
 
 
 def inicioSecion(request):
-    return render(request, 'inicioSecion.html')
+    return render(request, 'inicioSesion.html')
 
 def crearComp(request):
     if request.method == 'GET':

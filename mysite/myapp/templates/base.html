@@ -1,21 +1,105 @@
 
-<nav>
-    <ul>
-        <li>
-            <a href="/">Inicio/</a>
-            <a href="/crearComp">Competencia/</a>
-            <a href="/crearHorario">crear Horario/</a>
-            <a href="/crearGrup">Grupo/</a>
-            <a href="/Horario">Horario/</a>
-            <a href="/crearTemp">Temporada/</a>
-            <a href="/crearDepo">Deporte/</a>
-            <a href="/crearEqui">Equipo/</a>
-            <a href="/crearJug">Jugador/</a>
-            <a href="/inicioSecion">Salir/</a>
-            <a href="/registro">Registrarse/</a>
-        </li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-{% endblock %}
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu-Lateral</title>
+    <link rel="stylesheet" href={% static 'css/base.css'%}>
+</head>
+
+<body>
+
+    <div class="barra-lateral">
+        <div class="nombre-pagina">
+            <ion-icon id="unl" name="logo-firefox"></ion-icon>
+
+            <span>UNL</span>
+        </div>
+        <button class="boton">
+            <ion-icon name="add-outline"></ion-icon>
+            <span>Menu</span>
+
+        </button>
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a href="#">
+                        <ion-icon name="accessibility-outline"></ion-icon>
+                        <span>Crear</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="flash-outline"></ion-icon>
+                        <span>Competencia</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="football-outline"></ion-icon>
+                        <span>Temporada</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        <span>Horarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="man-outline"></ion-icon>
+                        <span>Jugador</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="bonfire-outline"></ion-icon>
+                        <span>Deporte</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="linea">
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Drake Mode</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="usuario">
+            <img src="" alt="">
+            <div class="info-usuario">
+                <div class="nombre-email">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PanelDerecha">
+            {% block content %}
+
+            {% endblock %}
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src={% static 'java/base.js'%}></script>
+</body>
+
+</html>
+
+
