@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51970b2d-d4e7-4308-9bff-4a5124cdd2b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/mysite/myapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/myapp/static/image/soccer-background-in-black-colors-vector-24273164.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/myapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/myapp/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/myapp/templates/menu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
