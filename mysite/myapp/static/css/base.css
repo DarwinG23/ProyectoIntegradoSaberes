@@ -12,7 +12,7 @@
 
     --color-switch-base:rgb(201,202,206);
     --color-switch-circulo:rgb(241,241,241);
-
+    
 
 }
 .dark-mode{
@@ -27,7 +27,7 @@
 
     --color-switch-base:rgb(39,205,64);
     --color-switch-circulo:rgb(255,255,255);
-
+    
 
 }
 *{
@@ -45,12 +45,12 @@ body{
 
 }
 .barra-lateral{
-    width: 250px;
-    height: 100vh;
-    overflow-y: auto; /* Agrega un desplazamiento vertical si el contenido excede el tamaño de la barra */
-    padding: 20px 15px;
-    background-color: var(--color-barra-lateral);
-    transition: width 0.5s ease, background-color 0.3s ease;
+   width: 250px;
+   height: 100%;
+   overflow: hidden;
+   padding: 20px 15px;
+   background-color: var(--color-barra-lateral);
+   transition: width 0.5s ease, background-color 0.3s ease;;   
 
 }
 .mini-barra-lateral{
@@ -81,12 +81,12 @@ body{
     min-width: 50px;
     font-size: 40px;
     cursor: pointer;
-
+    
 }
 .barra-lateral .nombre-pagina span{
     margin-left: 5px;
     font-size: 25px;
-
+ 
 }
 .barra-lateral .nombre-pagina span{
     font-size: 25px;
@@ -97,7 +97,7 @@ body{
 .barra-lateral .nombre-pagina span.oculto{
     opacity: 0;
 }
-.barra-lateral .boton{
+.barra-lateral .boton{ 
     width: 100%;
     height: 45px;
     margin-bottom: 20px;
@@ -119,7 +119,7 @@ body{
     list-style: none;
     display: flex;
     margin-bottom: 5px;
-
+    
 }
 .barra-lateral .navegacion a{
     width: 100%;
@@ -136,7 +136,7 @@ body{
     color: var(--color-menu-hover-texto);
 }
 .barra-lateral .navegacion ion-icon{
-    min-width: 50px;
+    min-width: 50px; 
     font-size: 25px;
 }
 
@@ -191,20 +191,8 @@ body{
     border-radius: 50%;
     left:2px;
     transition: left 0.5s ease;
-
+ 
 }
 .barra-lateral .modo-oscuro .circulo.prendido{
     left: 15px;
-}
-.titulo{
-    position: center;
-    width: 100%;
-    height: 50px;
-    display: flex;
-
-}
-
-.PanelDerecha{
-    text-align: center;
-
 }
