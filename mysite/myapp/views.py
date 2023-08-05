@@ -140,3 +140,9 @@ def crearGrup(request):
 def verHorario(request):
     horarios = Horario.objects.all()
     return render(request, 'Horario.html', {'horarios': horarios})
+
+
+def verEquipos(request):
+    equipos = Equipo.objects.all()
+    return render(request, 'equipos.html', {'equipos': equipos})
+

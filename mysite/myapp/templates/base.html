@@ -1,24 +1,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu-Lateral</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="fondo">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">UNL</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-             <div class="navbar-nav">
+             <div class="navbar-nav ms-auto">
                 <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                 <a class="nav-link" href="#">Loguearse</a>
                 <a class="nav-link" href="#">Registrarse</a>
@@ -30,16 +30,74 @@
 
     <div class="row my-3">
         <div class="col-sm-12 col-md-2 col-lg-3 col-xl-3 mx-4 px-6">
-
+             <div class="menu">
+                 <ion-icon name="grid-outline"></ion-icon>
+                 <ion-icon name="close-circle-outline"></ion-icon>
+             </div>
+             <div class="barra-lateral">
+                 <div>
+                      <div class="nombre-pagina">
+                         <ion-icon id="cloud"name="logo-google-playstore"></ion-icon>
+                         <span>UNL</span>
+                      </div>
+                     <button class="boton">
+                         <ion-icon name="add-outline"></ion-icon>
+                         <span>Crear</span>
+                     </button>
+                 </div>
+                 <nav class="navegacion">
+                     <ul>
+                          <li>
+                              <a id="inicio" href="#">
+                                 <ion-icon name="body-outline"></ion-icon>
+                                 <span>Inicio</span>
+                              </a>
+                          </li>
+                         <li>
+                              <a href="#">
+                                   <ion-icon name="browsers-outline"></ion-icon>
+                                   <span>Deportes</span>
+                              </a>
+                         </li>
+                         <li>
+                               <a href="#">
+                                  <ion-icon name="football-outline"></ion-icon>
+                                  <span>Competencia</span>
+                               </a>
+                         </li>
+                          <li>
+                               <a href="#">
+                                  <ion-icon name="layers-outline"></ion-icon>
+                                  <span>Equipos</span>
+                               </a>
+                          </li>
+                         <li>
+                             <a href="#">
+                                 <ion-icon name="people-circle-outline"></ion-icon>
+                                 <span>Jugadores</span>
+                             </a>
+                         </li>
+                         <li>
+                             <a href="#">
+                               <ion-icon name="tablet-portrait-outline"></ion-icon>
+                               <span>Tabla</span>
+                             </a>
+                         </li>
+                         <li>
+                             <a href="#">
+                                <ion-icon name="filter-circle-outline"></ion-icon>
+                                <span>Resultados</span>
+                             </a>
+                         </li>
+                     </ul>
+                 </nav>
+             </div>
         </div>
-
 
         <div class="col-sm-12  col-md-8 col-lg-8 col-xl-8" >
             {% block content %}
             {% endblock %}
         </div>
     </div>
-
-
 </body>
 
