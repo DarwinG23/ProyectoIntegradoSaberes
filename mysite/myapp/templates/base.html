@@ -78,23 +78,32 @@
 
         <div>
             <div class="linea">
+               {% if request.user.is_authenticated %}
+                   <div class="usuario py-5">
+                        <img src="{% static 'img/usuario.jpg' %}" alt="">
+                        <div class="info-usuario">
+                            <div class="nombre-email">
+                               <span class="nombre">{{ user.username | upper }}</span>
+                                <span class="email">{{ user.email}}</span>
+                            </div>
+                               <a href={% url 'salir' %}>
+                                   <button>salir</button>
+                               </a>
+                         </div>
+                   </div>
+               {% else %}
+                     <div class="usuario py-5">
+                            <a href={% url 'login' %}>
+                                <button class="btn btn-sm btn-light ">Iniciar sesión</button>
+                            </a>
+                            <a href={% url 'registro' %}>
+                                <button class="btn btn-sm btn-light">Registrarse</button>
+                            </a>
+                     </div>
+               {% endif %}
 
-                <div class="usuario">
-                    <img src="/usuario.jpg" alt="">
-                    <div class="info-usuario">
-                        <div class="nombre-email">
-                            <span class="nombre">Alexander Sánchez</span>
-                            <span class="email">alexander.a.sanchez@unl.edu.ec</span>
-                        </div>
-                            <ion-icon name="ellipsis-vertical"></ion-icon>
-
-                </div>
-
-
-               </div>
-
+            </div>
         </div>
-    </div>
     </div>
 
 

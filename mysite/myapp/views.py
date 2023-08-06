@@ -2,29 +2,17 @@ from django.shortcuts import render
 from .forms import *  #importa todos los formularios
 from .models import *  #importa todos los modelos
 from django.shortcuts import redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
-def registro(request):
-    if request.method == 'POST':
-        form = RegistroForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_superuser = False  # Establece como usuario común
-            user.save()
-            login(request, user)
-            return redirect('nombre_de_la_vista')
-    else:
-        form = RegistroForm()
-    return render(request, 'registro.html', {'form': form})
-
-
 
 def menu(request):
     return render(request, 'menu.html')
 
-
+@login_required
 def inicioSecion(request):
     return render(request, 'inicioSesion.html')
 
@@ -136,7 +124,7 @@ def crearGrup(request):
                 equipo.generar_Grupos(num_grupos)
             return redirect('crearGrup')
 
-
+@login_required
 def verHorario(request):
     horarios = Horario.objects.all()
     return render(request, 'Horario.html', {'horarios': horarios})
@@ -154,3 +142,20 @@ def verCompetencias(request):
     competencias = Competencia.objects.all()
     temporadas = Temporada.objects.all()
     return render(request, 'competencias.html', {'competencias': competencias, 'temporadas': temporadas})
+
+def salir(request):
+    logout(request)
+    return redirect('/')
+
+def registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+    if request.method == 'POST':
+        user_creation_form = CustomUserCreationForm(data=request.POST)
+        if user_creation_form.is_valid():
+            user_creation_form.save()
+            user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
+            login(request, user)
+            return redirect('menu')
+    return render(request, 'registration/register.html', data)

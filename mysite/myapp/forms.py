@@ -53,9 +53,8 @@ class GrupoForm(forms.Form):
     numGrupos = forms.IntegerField(label="Numero de Grupos", min_value=1, max_value=50, required=True)
 
 
-class RegistroForm(UserCreationForm):
-    email = forms.EmailField()
 
+class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'first_name', 'last_name' ,'email', 'password1', 'password2']

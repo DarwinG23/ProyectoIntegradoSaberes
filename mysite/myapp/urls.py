@@ -8,7 +8,6 @@ urlpatterns = [
     path('crearTemp/', views.crearTemp, name='crearTemp'),
     path('inicioSecion/', views.inicioSecion, name='inicioSecion'),
     path('crearDepo/', views.crearDepo, name='crearDepo'),
-    path('registro/', views.registro, name='registro'),
     path('crearEqui/', views.crearEqui, name='crearEqui'),
     path('crearJug/', views.crearCompetidor, name='crearJug'),
     path('crearGrup/', views.crearGrup, name='crearJug'),
@@ -17,5 +16,7 @@ urlpatterns = [
     path('equipos/', views.verEquipos, name='ver Equipos'),
     path('competidores/', views.verCompetidores, name='ver Competidores'),
     path('competencias/', views.verCompetencias, name='ver Competencias'),
+    path('salir/', views.salir, name='salir'),
+    path('registro/', views.registro, name='registro'),
 
 ]
