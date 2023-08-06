@@ -146,3 +146,11 @@ def verEquipos(request):
     equipos = Equipo.objects.all()
     return render(request, 'equipos.html', {'equipos': equipos})
 
+def verCompetidores(request):
+    competidores = Competidor.objects.all()
+    return render(request, 'competidores.html', {'competidores': competidores})
+
+def verCompetencias(request):
+    competencias = Competencia.objects.all()
+    temporadas = Temporada.objects.all()
+    return render(request, 'competencias.html', {'competencias': competencias, 'temporadas': temporadas})

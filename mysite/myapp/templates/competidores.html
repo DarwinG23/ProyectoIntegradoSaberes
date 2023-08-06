@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Jugadores</h1>
+    {% for competidor in competidores %}
+        {{ competidor.nombre }} {{ competidor.apellido }} {{ competidor.equipo }}
+    {% endfor %}
+{% endblock %}
+```

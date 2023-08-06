@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Competencias</h1>
+    {% for competencia in competencias %}
+        <p>{{ competencia.nombre }} - {{ competencia.descripcion }}</p>
+        <p>Temporadas de la competencia:</p>
+        <ul>
+            {% for temporada in competencia.temporada_set.all %}
+                <li>{{ temporada.nombre }} - {{ temporada.descripcion }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}
+```

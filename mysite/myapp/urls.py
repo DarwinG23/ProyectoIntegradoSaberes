@@ -15,5 +15,7 @@ urlpatterns = [
     path('crearHorario/', views.crearHorario, name='crearHora'),
     path('Horario/', views.verHorario, name='ver Horario'),
     path('equipos/', views.verEquipos, name='ver Equipos'),
+    path('competidores/', views.verCompetidores, name='ver Competidores'),
+    path('competencias/', views.verCompetencias, name='ver Competencias'),
 
 ]
