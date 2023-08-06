@@ -2,12 +2,25 @@
 
 {% block content %}
        {% for horario in horarios  %}
-         <h1>{{ horario.nombre }}</h1>
-            <p>NUMERO DE CANCHAS: {{ horario.numCanchas }}</p>
-             <ul>
-                {% for partido in horario.partido_set.all %}
-                <li>Fecha: {{ partido.numFecha }} ||| {{ partido.equipo_local }} |||    vs  |||   {{ partido.equipo_visitante }} ||| Cancha: {{ partido.cancha }} </li>
-                {% endfor %}
-             </ul>
+           <h1>{{ horario.nombre }}</h1>
+           <p>NUMERO DE CANCHAS: {{ horario.numCanchas }}</p>
+           <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Partido</th>
+                        <th>Cancha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for partido in horario.partido_set.all %}
+                        <tr>
+                            <td>{{ partido.numFecha }}</td>
+                            <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
+                            <td>{{ partido.cancha }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+           </table>
        {% endfor %}
 {% endblock %}
