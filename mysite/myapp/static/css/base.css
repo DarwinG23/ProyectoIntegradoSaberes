@@ -1,26 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;1,400;1,500&family=Noto+Sans+Display:ital,wght@1,500&family=Outfit:wght@500&display=swap');
 
 :root{
-    --color-barra-lateral: rgba(0, 0, 0, 0.85);
-
-    --color-texto:rgb(0,0,0);
-    --color-texto-menu:rgb(134,136,144);
-
-    --color-menu-hover:rgb(238, 238, 238);
-    --color-menu-hover-texto:rgb(0,0,0);
-
-    --color-boton:rgb(0, 0, 0);
-    --color-barra-texto:rgb(255, 255, 255);
-
-    --color-linea:rgb(180,180,180);
-
-    --color-switch-base: rgb(201, 202, 206);
-    --color-switch-circulo: rgb(241, 241, 241);
-
-    --color-scroll: rgb(192,192,192);
-    --color-scroll-hover: rgb(134,134,134);
-}
-.dark-mode{
     --color-barra-lateral:rgb(44, 45, 49);
 
     --color-texto:rgb(255,255,255);
@@ -39,9 +19,7 @@
 
     --color-scroll: rgb(68,69,74);
     --color-scroll-hover: rgb(85,85,85);
-
 }
-
 *{
     margin: 0;
     padding: 0;
@@ -51,11 +29,30 @@
 body{
     height: 100vh;
     width: 100%;
-    background-color: rgb(77, 204, 166)
+    background-color: rgb(191, 191, 191)
 }
 /*Barra lateral Resposiva*/
 .menu{
-    position:fixed;
+    position:fixed;:root{
+    --color-barra-lateral:rgb(44, 45, 49);
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(110,110,117);
+
+    --color-menu-hover:rgb(0,0, 0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-boton:rgb(255,255, 255);
+    --color-barra-texto:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+
+    --color-switch-base: rgb(39,205, 64);
+    --color-switch-circulo: rgb(255, 255, 255);
+
+    --color-scroll: rgb(68,69,74);
+    --color-scroll-hover: rgb(85,85,85);
+}
     width: 50px;
     height: 50px;
     font-size: 30px;
@@ -142,9 +139,13 @@ body{
     background-color: var(--color-boton);
     color: var(--color-barra-texto);
 }
+
 .barra-lateral .boton ion-icon{
     min-width: 50px;
     font-size: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-barra-texto);
 
 }
 /* Menu de navergacion*/
@@ -296,6 +297,11 @@ body{
     color: var(--color-menu-hover-texto);
 
 }
+#boton{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
 main{
     margin-left: 250px;
     padding: 20px;
@@ -338,3 +344,27 @@ main.min-main{
     }
 }
 
+.main h1{
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cuadro-grande {
+    border: 2px solid black;
+    padding: 20px;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cuadro-pequeno {
+    border: 4px solid black;
+    padding: 10px;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+}
