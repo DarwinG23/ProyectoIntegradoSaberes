@@ -10,29 +10,10 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
-<body class="fondo">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">UNL</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-             <div class="navbar-nav ms-auto">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                <a class="nav-link" href="#">Loguearse</a>
-                <a class="nav-link" href="#">Registrarse</a>
-                <a class="nav-link disabled">Salir</a>
-            </div>
-         </div>
-       </div>
-   </nav>
-
-    <div class="row my-3">
-        <div class="col-sm-12 col-md-2 col-lg-3 col-xl-3 mx-4 px-6">
+<body>
+    <div class="row">
+        <div class="col-sm-12 col-md-2 col-lg-3 col-xl-3 mx-0">
              <div class="menu">
-                 <ion-icon name="grid-outline"></ion-icon>
-                 <ion-icon name="close-circle-outline"></ion-icon>
              </div>
              <div class="barra-lateral">
                  <div>
@@ -91,10 +72,44 @@
                          </li>
                      </ul>
                  </nav>
+                 <div>
+                     <div class="linea">
+                         <div class="modo-oscuro">
+                             <div class="info">
+                                 <ion-icon name="moon-outline"></ion-icon>
+                                 <span>Mod Oscuro</span>
+                             </div>
+                             <div class="switch">
+                                 <div class="base">
+                                     <div class="circulo">
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
              </div>
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+            <script src="{% static 'java/base.js' %}"></script>
         </div>
-
         <div class="col-sm-12  col-md-8 col-lg-8 col-xl-8" >
+             <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+                   <div class="container-fluid">
+                        <a class="navbar-brand" href="#">UNL</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                           <div class="navbar-nav ms-auto">
+                              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                              <a class="nav-link" href="#">Loguearse</a>
+                              <a class="nav-link" href="#">Registrarse</a>
+                              <a class="nav-link disabled">Salir</a>
+                           </div>
+                      </div>
+                   </div>
+            </nav>
             {% block content %}
             {% endblock %}
         </div>
