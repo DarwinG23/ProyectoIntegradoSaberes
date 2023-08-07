@@ -3,15 +3,19 @@
 
 {% block content %}
     <h1> Lista de equipos</h1>
-    {% for equipo in equipos %}
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-           <div class="card-body">
-              <h5 class="card-title">{{ equipo.nombre }}</h5>
-              <p class="card-text">{{ equipo.descripcion }}</p>
-              <a href="#" class="btn btn-primary">{{ equipo.grupo }}</a>
-          </div>
-        </div>
-    {% endfor %}
+    <div class="row mx-5 card-grid">
+       {% for equipo in equipos %}
+            <div class="col">
+               <div class="card my-4" style="width: 18rem; display: grid;">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ equipo.nombre }}</h5>
+                    <p class="card-text">{{ equipo.descripcion }}</p>
+                    <a href="#" class="btn  btn-primary">{{ equipo.grupo }}</a>
+                  </div>
+               </div>
+            </div>
+       {% endfor %}
+    </div>
 {% endblock %}
 ```
