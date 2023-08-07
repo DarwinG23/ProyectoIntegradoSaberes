@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="row mx-5 card-grid">
+         {% for grupo in grupos %}
+             <div class="col">
+               <div class="card my-4" style="width: 18rem; display: grid;">
+                  <div class="card-body">
+                      <h4>{{ grupo.nombre }}</h4>
+                      {% for equipo in grupo.equipo_set.all %}
+                          <hr>
+                          <p class="mx-3">{{ equipo.nombre }}</p>
+                      {% endfor %}
+                      <hr>
+                  </div>
+               </div>
+            </div>
+         {% endfor %}
+    </div>
+{% endblock %}
+```

@@ -159,3 +159,8 @@ def registro(request):
             login(request, user)
             return redirect('menu')
     return render(request, 'registration/register.html', data)
+
+
+def verGrupos(request):
+    grupos = Grupo.objects.all()
+    return render(request, 'grupos.html', {'grupos': grupos})

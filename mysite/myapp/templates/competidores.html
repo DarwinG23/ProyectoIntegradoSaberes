@@ -2,9 +2,10 @@
 
 
 {% block content %}
-    <h1>Jugadores</h1>
+    <h1 style="color: aliceblue">Jugadores</h1>
     {% for competidor in competidores %}
-        {{ competidor.nombre }} {{ competidor.apellido }} {{ competidor.equipo }}
+        <p style="color: aliceblue"> {{ competidor.nombre }} {{ competidor.apellido }} {{ competidor.equipo }}</p>
+
     {% endfor %}
 {% endblock %}
 ```
