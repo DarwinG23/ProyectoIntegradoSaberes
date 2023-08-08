@@ -173,3 +173,7 @@ def verGrupos(request):
     grupos = Grupo.objects.all()
     deportes = Deporte.objects.all()
     return render(request, 'grupos.html', {'grupos': grupos, 'deportes': deportes})
+
+@login_required
+def crear(request):
+    return render(request, 'crear.html')
