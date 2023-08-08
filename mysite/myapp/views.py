@@ -1,3 +1,4 @@
+from django.db.models import Max
 from django.shortcuts import render
 from .forms import *  #importa todos los formularios
 from .models import *  #importa todos los modelos
@@ -96,8 +97,12 @@ def crearCompetidor(request):
 def crearHorario(request):
     equipos = Equipo.objects.all()
     grupos = Grupo.objects.all()
+    fecha = Partido.objects.aggregate(Max('numFecha'))['numFecha__max']
+    context = {
+        'fecha': fecha,
+    }
     if request.method == 'GET':
-        return render(request, 'crearHorario.html', {'form': HorarioForm(), 'equipos': equipos, 'grupos': grupos})
+        return render(request, 'crearHorario.html', {'form': HorarioForm(), 'equipos': equipos, 'grupos': grupos, **context})
     else:
         form = HorarioForm(request.POST)
         if form.is_valid():
@@ -106,7 +111,7 @@ def crearHorario(request):
             horaInicio = form.cleaned_data['horaInicio']
             horaFin = form.cleaned_data['horaFin']
             grupo = grupos.first()
-            grupo.generar_Partidos()
+            grupo.generar_Partidos(deporte)
             grupo.generar_horario(numCanchas, deporte, horaInicio, horaFin)
             return redirect('/Horario')
 

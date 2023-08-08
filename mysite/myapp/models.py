@@ -1,6 +1,10 @@
+from datetime import time
 from django.db import models
 import random
 from random import shuffle
+
+
+
 
 
 # Create your models here.
@@ -67,8 +71,9 @@ class Grupo (models.Model):
     deporte = models.ForeignKey(Deporte, on_delete=models.DO_NOTHING, null=False, blank=False, default=None)
 
     #Metodos
-    def generar_Partidos(self):
-        grupos = Grupo.objects.all()
+    def generar_Partidos(self, deporte):
+
+        grupos = Grupo.objects.filter(deporte=deporte)
 
         for grupo in grupos:
             lista_equipos = list(Equipo.objects.filter(grupo=grupo))
@@ -114,15 +119,22 @@ class Grupo (models.Model):
 
     def generar_horario(self, num_canchas, deporte,hora_inicio, hora_fin):
         # Obtener todos los grupos de la base de datos
-        grupos = Grupo.objects.all()
+        grupos = Grupo.objects.filter(deporte=deporte)
+
+
+        hora_inicio_entero = hora_inicio.hour
+        hora_fin_entero = hora_fin.hour
+
+        diferencia_horas = hora_fin_entero - hora_inicio_entero
 
         # Crear el objeto Horario y guardarlo en la base de datos
-        horario_obj = Horario.objects.create(numCanchas=num_canchas, deporte = deporte ,horaInicio=hora_inicio, horaFin=hora_fin)
+        horario_obj = Horario.objects.create(numCanchas=num_canchas, deporte=deporte, horaInicio=hora_inicio, horaFin=hora_fin)
 
         # Recorrer cada grupo y asignar horarios y números de cancha a sus partidos
         for idx, grupo in enumerate(grupos, start=1):
             partidos_grupo = list(grupo.partido_set.all())
             random.shuffle(partidos_grupo)
+
 
             # Crear un diccionario para mantener un seguimiento de las canchas disponibles por fecha
             canchas_por_fecha = {}
@@ -131,8 +143,9 @@ class Grupo (models.Model):
             for partido in partidos_grupo:
                 fecha_asignada = partido.numFecha
 
+
                 # Verificar si ya hay canchas asignadas para esa fecha
-                if fecha_asignada in canchas_por_fecha:
+                if fecha_asignada in canchas_por_fecha:#
                     canchas_disponibles = canchas_por_fecha[fecha_asignada]
                 else:
                     # Si no hay canchas asignadas para esa fecha, crear una lista de canchas disponibles
@@ -143,9 +156,21 @@ class Grupo (models.Model):
                 # Asignar la primera cancha disponible para el partido en la fecha asignada
                 cancha_asignada = canchas_disponibles.pop(0)
 
+
                 # Agregar el partido a la fecha y cancha asignada
                 partido.cancha = cancha_asignada
                 partido.horario = horario_obj
+
+                while hora_inicio_entero <= hora_fin_entero:
+                    hora_actual = time(hour=hora_inicio_entero)
+                    partidos_misma_fecha_hora = Partido.objects.filter(numFecha=fecha_asignada, hora=hora_actual)
+                    if len(partidos_misma_fecha_hora) < num_canchas:
+                         # Crear objeto time a partir del entero
+                        hora_python = time(hora_actual.hour, hora_actual.minute,hora_actual.second)  # Crear objeto time de Python
+                        partido.hora = hora_python
+                        break
+                    else:
+                        hora_inicio_entero += 1
                 partido.save()
 
         # Guardar el objeto Horario en la base de datos
@@ -224,6 +249,7 @@ class Horario(models.Model):
 class Partido(models.Model):
     #Atributos
     numFecha = models.IntegerField(verbose_name="Numero de fecha", null=True, blank=False)
+    hora = models.TimeField(verbose_name="Hora", null=True, blank=True, default=None, unique=False)
     cancha = models.IntegerField(verbose_name="Numero de cancha", null=True, blank=True)
 
     #Relaciones

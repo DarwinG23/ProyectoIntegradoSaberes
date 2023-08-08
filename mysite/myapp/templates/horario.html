@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
        {% for horario in horarios  %}
            <h1 style="color: aliceblue">Horario de {{ horario.deporte.nombre }}</h1>
@@ -8,14 +10,15 @@
                 <thead>
                     <tr>
                         <th>Hora</th>
-                        <th>Partido</th>
-                        <th>Cancha</th>
+                        <th>Dia 1</th>
+                        <th>Dia 2</th>
+                        <th>Dia 3</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for partido in horario.partido_set.all %}
                         <tr>
-                            <td>{{ partido.numFecha }}</td>
+                            <td>{{ partido.hora }}</td>
                             <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
                             <td>{{ partido.cancha }}</td>
                         </tr>
