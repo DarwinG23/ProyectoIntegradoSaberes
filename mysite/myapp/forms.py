@@ -45,12 +45,15 @@ class CompetidorForm(forms.Form):
 
 
 class HorarioForm(forms.Form):
-    nombre = forms.CharField(label="Nombre", max_length=100, required=True)
+    deporte = forms.ModelChoiceField(queryset=Deporte.objects.all(), empty_label=None, label="Para el deporte:", required=True)
     numCanchas = forms.IntegerField(label="Numero de Canchas", min_value=1, max_value=50, required=True)
+    horaInicio = forms.TimeField(label="Hora de inicio por dia", required=True)
+    horaFin = forms.TimeField(label="Hora de fin por dia", required=True)
 
 
 class GrupoForm(forms.Form):
     numGrupos = forms.IntegerField(label="Numero de Grupos", min_value=1, max_value=50, required=True)
+    deporte = forms.ModelChoiceField(queryset=Deporte.objects.all(), empty_label=None, label="Para el deporte:", required=True)
 
 
 

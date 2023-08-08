@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Creación de Grupos</h1>
-    <h2>Lista de equipos inscritos</h2>
+    <h1 style="color: aliceblue">Creación de Grupos</h1>
+    <h2 style="color: aliceblue">Lista de equipos inscritos</h2>
     <ol>
         {% for equipo in equipos %}
-            <li>{{equipo.nombre}}</li>
+            <li style="color: aliceblue">{{equipo.nombre}}</li>
         {% endfor %}
     </ol>
-    <form method="POST">
+    <form style="color: aliceblue" method="POST">
      {% csrf_token %}
      {{form.as_p}}
         <button>

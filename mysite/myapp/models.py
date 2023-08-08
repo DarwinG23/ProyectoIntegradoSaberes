@@ -59,7 +59,12 @@ class Deporte(models.Model):
 
 class Grupo (models.Model):
     #Atributos
-    nombre = models.CharField(max_length=100, null=True,unique=True,verbose_name="Nombre")
+    nombre = models.CharField(max_length=100, null=True,unique=False,verbose_name="Nombre")
+
+
+    #Relaciones
+    #relacion de una a uno con deporte
+    deporte = models.ForeignKey(Deporte, on_delete=models.DO_NOTHING, null=False, blank=False, default=None)
 
     #Metodos
     def generar_Partidos(self):
@@ -107,12 +112,12 @@ class Grupo (models.Model):
             # Guardar todos los objetos Partido en la base de datos de una vez
             Partido.objects.bulk_create(partidos_a_crear)
 
-    def generar_horario(self, num_canchas, nombre_horario):
+    def generar_horario(self, num_canchas, deporte,hora_inicio, hora_fin):
         # Obtener todos los grupos de la base de datos
         grupos = Grupo.objects.all()
 
         # Crear el objeto Horario y guardarlo en la base de datos
-        horario_obj = Horario.objects.create(nombre=nombre_horario, numCanchas=num_canchas)
+        horario_obj = Horario.objects.create(numCanchas=num_canchas, deporte = deporte ,horaInicio=hora_inicio, horaFin=hora_fin)
 
         # Recorrer cada grupo y asignar horarios y números de cancha a sus partidos
         for idx, grupo in enumerate(grupos, start=1):
@@ -163,13 +168,13 @@ class Equipo(models.Model):
     deporte = models.ForeignKey(Deporte, on_delete=models.SET_NULL, null=True, blank=True)
 
     #Metodos
-    def generar_Grupos(self, num_grupos):
+    def generar_Grupos(self, num_grupos, deporte):
         num_equipos = Equipo.objects.count()
         lista_grupos = []
 
         # Crear los grupos
         for i in range(num_grupos):
-            grupo = Grupo.objects.create(nombre="Grupo " + str(i + 1))
+            grupo = Grupo.objects.create(nombre="Grupo " + str(i + 1), deporte=deporte)
             lista_grupos.append(grupo)
             grupo.save()
 
@@ -182,7 +187,8 @@ class Equipo(models.Model):
         equipos = Equipo.objects.all()
         for i, equipo in enumerate(equipos):
             grupo_index = i % num_grupos
-            lista_grupos[grupo_index].equipo_set.add(equipo)
+            if equipo.deporte == lista_grupos[grupo_index].deporte:
+               lista_grupos[grupo_index].equipo_set.add(equipo)
 
 
 class Competidor(models.Model):
@@ -204,11 +210,15 @@ class Competidor(models.Model):
 
 class Horario(models.Model):
     # Atributos
-    nombre = models.CharField(max_length=100, null=False, unique=True, verbose_name="Nombre")
     numCanchas = models.IntegerField(verbose_name="Numero de canchas")
+    horaInicio = models.TimeField(verbose_name="Hora de inicio", default=None, null=True, blank=True)
+    horaFin = models.TimeField(verbose_name="Hora de fin", default=None, null=True, blank=True)
+
+    #Relaciones
+    deporte = models.OneToOneField(Deporte, on_delete=models.DO_NOTHING, null=False, blank=False, default=None)
 
     def __str__(self):
-        return str(self.nombre)
+        return " Horario de " + str(self.deporte.nombre)
 
 
 class Partido(models.Model):
@@ -224,7 +234,7 @@ class Partido(models.Model):
 
     #Metodos
     def __str__(self):
-        return "Fecha" + str(self.numFecha) + " - " + str(self.Grupo.nombre)
+        return str(self.equipo_local.nombre) + " vs " + str(self.equipo_visitante.nombre) + " - " + str(self.Grupo.nombre)
 
 
 

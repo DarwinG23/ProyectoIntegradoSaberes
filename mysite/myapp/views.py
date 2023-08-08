@@ -101,11 +101,13 @@ def crearHorario(request):
     else:
         form = HorarioForm(request.POST)
         if form.is_valid():
-            nombreHorario = form.cleaned_data['nombre']
+            deporte = form.cleaned_data['deporte']
             numCanchas = form.cleaned_data['numCanchas']
+            horaInicio = form.cleaned_data['horaInicio']
+            horaFin = form.cleaned_data['horaFin']
             grupo = grupos.first()
             grupo.generar_Partidos()
-            grupo.generar_horario(numCanchas, nombreHorario)
+            grupo.generar_horario(numCanchas, deporte, horaInicio, horaFin)
             return redirect('/Horario')
 
 
@@ -118,11 +120,12 @@ def crearGrup(request):
         form = GrupoForm(request.POST)
         if form.is_valid():
             num_grupos = form.cleaned_data['numGrupos']
+            deporte = form.cleaned_data['deporte']
             # Generar grupos solo si el número de grupos es mayor a cero
             if num_grupos > 0:
                 equipo = equipos.first()
-                equipo.generar_Grupos(num_grupos)
-            return redirect('crearGrup')
+                equipo.generar_Grupos(num_grupos, deporte)
+            return redirect('/grupos')
 
 @login_required
 def verHorario(request):
@@ -163,4 +166,5 @@ def registro(request):
 
 def verGrupos(request):
     grupos = Grupo.objects.all()
-    return render(request, 'grupos.html', {'grupos': grupos})
+    deportes = Deporte.objects.all()
+    return render(request, 'grupos.html', {'grupos': grupos, 'deportes': deportes})
