@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-
-
+{% load static %}
 
 {% block content %}
-    {% load static %}
+    {% block extra_css %}
+       <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    {% endblock %}
 
-    <h2 style="color: aliceblue">Hola</h2>
-
+     {% block extra_js %}
+        <script src="{% static 'java/menu.js' %}"></script>
+     {% endblock %}
+    <h2 style="color: aliceblue">Personajes</h2>
+     <main></main>
 {% endblock %}
-    ```
