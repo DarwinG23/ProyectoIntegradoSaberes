@@ -82,7 +82,6 @@ body{
 
 }
 
-
 .barra-lateral .nombre-pagina{
     width: 100%;
     height: 45px;
@@ -330,6 +329,10 @@ main.min-main{
 
 h1 {
     text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+
 }
 
 .cuadro-grande {
@@ -348,6 +351,7 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
+
 
 
 
