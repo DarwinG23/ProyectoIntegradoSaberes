@@ -15,8 +15,9 @@ getCharacters(data => {
         <div class="image-container">
             <img src="${personaje.image}"alt="Personaje">
         </div>
-        <h2>${personaje.name}</h2>
-        <span>${personaje.status}</span>
+        <h2 style="color: aliceblue">${personaje.name}</h2>
+        <span style="color: aliceblue">${personaje.status}</span>
+    
     </article>
     `);
    const main = document.querySelector("main");

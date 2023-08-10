@@ -9,6 +9,7 @@
             {% for temporada in competencia.temporada_set.all %}
                 <li>{{ temporada.nombre }} - {{ temporada.descripcion }}</li>
             {% endfor %}
+
         </ul>
     {% endfor %}
 {% endblock %}
