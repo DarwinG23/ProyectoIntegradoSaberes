@@ -17,6 +17,10 @@ getCharacters(data => {
         </div>
         <h2 style="color: aliceblue">${personaje.name}</h2>
         <span style="color: aliceblue">${personaje.status}</span>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> main
     </article>
     `);
    const main = document.querySelector("main");
