@@ -36,7 +36,6 @@ cloud.addEventListener("click",()=>{
     main.classList.toggle("min-main");
     spans.forEach((span)=>{
         span.classList.toggle("oculto");
-
     
     });
 
