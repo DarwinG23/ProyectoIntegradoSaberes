@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% block extra_css %}
+       <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    {% endblock %}
+
+     {% block extra_js %}
+        <script src="{% static 'java/menu.js' %}"></script>
+     {% endblock %}
+    <br>
+    <br>
+    <h2 style="color: aliceblue">Horario</h2>
+
+     <main></main>
+{% endblock %}

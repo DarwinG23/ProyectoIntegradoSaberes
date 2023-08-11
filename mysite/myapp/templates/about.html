@@ -1,6 +1,6 @@
 {%  extends 'base.html' %}
 {% block titulo %}Acerca de{% endblock %}
-
+{%  load static %}
 {% block barra %}
     <li class="nav-item">
       <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="../static/img/about-img.png" alt="">
+            <img src="{% static 'img/about-img.png' %}" alt="">
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
               <div class="col-md-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
-                    <img src="../static/img/steven.jpg" alt="">
+                    <img src="{% static 'img/steven.jpg' %}" alt="">
                   </div>
                   <div class="detail-box">
                     <div class="client_info">
@@ -79,10 +79,10 @@
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/mail.png" alt=""> steven.luna@unl.edu.ec</a>
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> steven.luna@unl.edu.ec</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/StevenLunaG"><img src="../static/img/git.png" alt=""> github.com/StevenLunaG</a>
+                        <a class="nav-link" href="https://github.com/StevenLunaG"><img src="{% static 'img/git.png' %}" alt=""> github.com/StevenLunaG</a>
                       </li>
                     </ul>
                   </div>
@@ -97,7 +97,7 @@
               <div class="col-md-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
-                    <img src="../static/img/stiven.jpg" alt="">
+                    <img src="{% static 'img/stiven.jpg' %}" alt="">
                   </div>
                   <div class="detail-box">
                     <div class="client_info">
@@ -113,13 +113,13 @@
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/phone.png" alt=""> +593 99 490 8727</a>
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/phone.png' %}" alt=""> +593 99 490 8727</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/mail.png" alt=""> stiven.jimenez@unl.edu.ec</a>
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> stiven.jimenez@unl.edu.ec</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/StivenPabloJimenezCastillo"><img src="../static/img/git.png" alt=""> github.com/StivenPabloJimenez...</a>
+                        <a class="nav-link" href="https://github.com/StivenPabloJimenezCastillo"><img src="{% static 'img/git.png' %}" alt=""> github.com/StivenPabloJimenez...</a>
                       </li>
                     </ul>
                   </div>
@@ -134,7 +134,7 @@
               <div class="col-md-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
-                    <img src="static/images/deivy.jpg" alt="">
+                    <img src="{% static 'img/Deivy.jpg' %}" alt="">
                   </div>
                   <div class="detail-box">
                     <div class="client_info">
@@ -150,13 +150,13 @@
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/phone.png" alt=""> +593 96 763 2689</a>
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/phone.png' %}" alt=""> +593 96 763 2689</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/mail.png" alt=""> david.a.guaman@unl.edu.ec</a>
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> david.a.guaman@unl.edu.ec</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/Yamfeild"><img src="../static/img/git.png" alt=""> github.com/Yamfeild</a>
+                        <a class="nav-link" href="https://github.com/Yamfeild"><img src="{% static 'img/git.png' %}" alt=""> github.com/Yamfeild</a>
                       </li>
                     </ul>
                   </div>

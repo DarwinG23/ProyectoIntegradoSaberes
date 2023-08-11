@@ -11,11 +11,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def menu(request):
-    return render(request, 'menu.html')
+    return render(request, 'index.html')
 
-@login_required
-def inicioSecion(request):
-    return render(request, 'inicioSesion.html')
+
 
 def crearComp(request):
     if request.method == 'GET':
@@ -177,3 +175,22 @@ def verGrupos(request):
 @login_required
 def crear(request):
     return render(request, 'crear.html')
+
+
+def home(request):
+    return render(request, 'index.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def sports(request):
+    return render(request, 'sports.html')
+
+def news(request):
+    return render(request, 'news.html')
+
+def calendar(request):
+    return render(request, 'calendar.html')
+
+def futbol(request):
+    return render(request, 'futbol.html')

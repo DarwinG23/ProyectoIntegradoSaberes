@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="color: aliceblue">Jugador</h1>
+    <p style="color: aliceblue"> Ingrese los datos del jugador!</p>
+    <form style="color: aliceblue" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}
+```

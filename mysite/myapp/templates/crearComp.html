@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1 style="color: aliceblue">Competencias</h1>
+    <p style="color: aliceblue"> Ingrese los datos de la competencia</p>
+    <form style="color: aliceblue" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button> Crear Copetencia </button>
+    </form>
+{% endblock %}
+```

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+<!-- Generacion de deportes-->
+{% block content %}
+    <h1 style="color: aliceblue">Deporte</h1>
+    <p style="color: aliceblue"> Ingrese los datos del deporte!</p>
+    <form style="color: aliceblue" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}
+```

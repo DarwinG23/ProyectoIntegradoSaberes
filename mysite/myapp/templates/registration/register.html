@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>REGISTRO DE USUARIO</h1>
+    <br>
+
+    <form method="Post">
+        {% csrf_token %}
+        <div class="card mx-auto" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title">Complete todos los campos</h5>
+                {{ form|crispy }}
+                <button class="btn btn-sm btn-primary" type="submit">Registrarse</button>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}

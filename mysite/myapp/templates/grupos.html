@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="row mx-5 card-grid">
+         por cada deporte
+         {% for deporte in deportes %}
+             {% if deporte.grupo_set.all %}
+                 <h1 style="color: aliceblue">Grupos de {{ deporte.nombre }}</h1>
+                 {% for grupo in deporte.grupo_set.all %}
+                   <div class="col">
+                      <div class="card my-4" style="width: 18rem; display: grid;">
+                           <div class="card-body">
+                               <h4>{{ grupo.nombre }}</h4>
+                              {% for equipo in grupo.equipo_set.all %}
+                                 <hr>
+                                 <p class="mx-3">{{ equipo.nombre }}</p>
+                              {% endfor %}
+                               <hr>
+                           </div>
+                      </div>
+                   </div>
+                 {% endfor %}
+             {% endif %}
+         {% endfor %}
+    </div>
+{% endblock %}
+```

@@ -6,7 +6,6 @@ urlpatterns = [
     path('', views.menu, name='menu'),
     path('crearComp/', views.crearComp, name='crearComp'),
     path('crearTemp/', views.crearTemp, name='crearTemp'),
-    path('inicioSecion/', views.inicioSecion, name='inicioSecion'),
     path('crearDepo/', views.crearDepo, name='crearDepo'),
     path('crearEqui/', views.crearEqui, name='crearEqui'),
     path('crearJug/', views.crearCompetidor, name='crearJug'),
@@ -20,5 +19,10 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('grupos/', views.verGrupos, name='ver Grupos'),
     path('crear/', views.crear, name='crear'),
-
+    path('', views.home, name='home'),
+    path('about', views.about, name='about'),
+    path('calendar', views.calendar, name='calendar'),
+    path('news', views.news, name='news'),
+    path('sports', views.sports, name='sports'),
+    path('futbol', views.futbol, name='futbol'),
 ]
