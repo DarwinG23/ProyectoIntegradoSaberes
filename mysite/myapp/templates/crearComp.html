@@ -1,10 +1,30 @@
 {% extends "base.html" %}
 
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
 
-{% block content %}
-    <h1 style="color: aliceblue">Competencias</h1>
-    <p style="color: aliceblue"> Ingrese los datos de la competencia</p>
-    <form style="color: aliceblue" method="POST">
+{% block contenido %}
+    <h1>Competencias</h1>
+    <p> Ingrese los datos de la competencia</p>
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button> Crear Copetencia </button>

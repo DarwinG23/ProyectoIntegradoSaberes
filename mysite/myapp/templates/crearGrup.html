@@ -1,14 +1,36 @@
 {% extends 'base.html' %}
 <!-- Generacion de grupos -->
-{% block content %}
-    <h1 style="color: aliceblue">Creación de Grupos</h1>
-    <h2 style="color: aliceblue">Lista de equipos inscritos</h2>
+
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+    <h1>Creación de Grupos</h1>
+    <h2>Lista de equipos inscritos</h2>
     <ol>
         {% for equipo in equipos %}
-            <li style="color: aliceblue">{{equipo.nombre}}</li>
+            <li>{{equipo.nombre}}</li>
         {% endfor %}
     </ol>
-    <form style="color: aliceblue" method="POST">
+    <form method="POST">
      {% csrf_token %}
      {{form.as_p}}
         <button>

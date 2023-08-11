@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
 
-{% block content %}
+
+{% block contenido %}
     <h1>Temporadas</h1>
     <p> Ingrese los datos de la temproada!</p>
     <form method="POST">
