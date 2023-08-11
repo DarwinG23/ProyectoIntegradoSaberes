@@ -1,131 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu-Lateral</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>
+      {% block titulo %}
+      {% endblock %}
+  </title>
+  <link rel="shortcut icon" href="../static/img/icon.png" type="" />
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+
 </head>
-<body class="bg-dark">
-    <div class="menu">
-        <ion-icon name="grid-outline"></ion-icon>
-        <ion-icon name="close-circle-outline"></ion-icon>
-    </div>
-    <div class="barra-lateral">
-        <div>
-            <div class="nombre-pagina">
-                <ion-icon id="cloud"name="logo-google-playstore"></ion-icon>
-                <span>UNL</span>
 
+<body>
+    <div class="hero_area">
+    <!-- header section strats -->
+        <header class="header_section">
+          <div class="header_bottom">
+            <div class="container-fluid">
+              <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src="../static/img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav  ">
+                      {%  block barra %}
+                      {% endblock %}
+                  </ul>
+                  <ul class="nav justify-content-end">
+                      <a class="nav-link" href="{% url 'login' %}"><img src="../static/img/user_icon.png" alt=""></a>
+                  </ul>
+                </div>
+              </nav>
             </div>
+          </div>
+        </header>
+    <!-- end header section -->
+      {% block contenido %}
+      {% endblock %}
 
-              <button class="boton">
-                  <a href="/crear">
-                    <ion-icon name="add-outline"></ion-icon>
-                  </a>
-                   <span>Crear</span>
-              </button>
-
-        </div>
-        <nav class="navegacion">
-            <ul>
-                <li>
-                    <a id="inicio" href="/">
-                        <ion-icon name="body-outline"></ion-icon>
-                        <span>Inicio</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="horario" href="/Horario">
-                        <ion-icon name="browsers-outline"></ion-icon>
-                        <span>Horarios</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="competencia" href="/competencias">
-                        <ion-icon name="football-outline"></ion-icon>
-                        <span>Competencia</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="equipos" href="/equipos">
-                        <ion-icon name="layers-outline"></ion-icon>
-                        <span>Equipos</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="grupos" href="/grupos">
-                        <ion-icon name="people-outline"></ion-icon>
-                        <span>Grupos</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="jugadores" href="/competidores">
-                        <ion-icon name="people-circle-outline"></ion-icon>
-                        <span>Jugadores</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="tabla" href="#">
-                        <ion-icon name="tablet-portrait-outline"></ion-icon>
-                        <span>Tabla</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="resultados" href="#">
-                        <ion-icon name="filter-circle-outline"></ion-icon>
-                        <span>Resultados</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <div>
-            <div class="linea">
-               {% if request.user.is_authenticated %}
-                   <div class="usuario py-5">
-                        <img src="{% static 'img/usuario.jpg' %}" alt="">
-                        <div class="info-usuario">
-                            <div class="nombre-email">
-                               <span class="nombre">{{ user.username | upper }}</span>
-                                <span class="email">{{ user.email}}</span>
-                            </div>
-                         </div>
-                   </div>
-                    <a href={% url 'salir' %}>
-                        <button class="btn btn-sm btn-light">salir</button>
-                    </a>
-               {% else %}
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <a href={% url 'login' %}>
-                           <button class="btn btn-sm btn-light ">Iniciar sesión</button>
-                   </a>
-                   <a  class="mx-2" href={% url 'registro' %}>
-                       <button class="btn btn-sm btn-light">Registrarse</button>
-                   </a>
-               {% endif %}
-
-            </div>
-        </div>
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        Univesidad Nacional de Loja - Carrera de Computacion
+      </p>
     </div>
+  </footer>
+  <!-- footer section -->
+</div>
+  <!-- jQery -->
+  <script src="../static/java/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="../static/java/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!--  OwlCarousel 2 - Filter -->
+  <script src="https://huynhhuynh.github.io/owlcarousel2-filter/dist/owlcarousel2-filter.min.js"></script>
+  <!-- custom js -->
+  <script src="../static/java/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
 
-
-
-    <main>
-         {% block content %}
-         {% endblock %}
-    </main>
-
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="{% static 'java/base.js' %}"></script>
 </body>
 </html>

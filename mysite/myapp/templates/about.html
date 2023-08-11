@@ -1,0 +1,177 @@
+{%  extends 'base.html' %}
+{% block titulo %}Acerca de{% endblock %}
+
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                DEZZ - SportApp
+              </h2>
+            </div>
+            <p>
+              Aplicacion de seguimiento de competencias deportivas que permita al usuario ver la informacion de disintinas competencias, como sus tabla de posiciones, fechas, resultados, equipos y jugadores, divididas por temporada-competencia-encuentro. Ademas de mostrar diferentes tipos de deportes, tanto individuales como por Equipos. Ademas, ofrece la funcion para realizar apuestas con las predicciones de los distintos partidos de los diveferentes deportes.
+            </p>
+            <a href="https://stevenlunag.github.io/AplicacionSeguimientoCompetenciasDeportivas/index.html">
+              Pagina de Desarrollo
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="../static/img/about-img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="client_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Programadores
+        </h2>
+      </div>
+    </div>
+    <div id="customCarousel2" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="../static/img/steven.jpg" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Steven E. Luna G.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante de computacion en la Univesidad Nacional de Loja. Poseo conocimiento en disintitos programas de deiseño y edicion multimedia, asi como en distintos lenguajes de programacion.
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/mail.png" alt=""> steven.luna@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/StevenLunaG"><img src="../static/img/git.png" alt=""> github.com/StevenLunaG</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="../static/img/stiven.jpg" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Stiven P. Jimenez C.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante universitario motivado en busca de oportunidades para crecer tanto personal como profesionalmente
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/phone.png" alt=""> +593 99 490 8727</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/mail.png" alt=""> stiven.jimenez@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/StivenPabloJimenezCastillo"><img src="../static/img/git.png" alt=""> github.com/StivenPabloJimenez...</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="static/images/deivy.jpg" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          David A. Guaman C.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante en la carrera de computacion con muchas ganas de aprender cosas nuevas y obtener nuevas habilidades. 
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/phone.png" alt=""> +593 96 763 2689</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="../static/img/mail.png" alt=""> david.a.guaman@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Yamfeild"><img src="../static/img/git.png" alt=""> github.com/Yamfeild</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ol class="carousel-indicators">
+        <li data-target="#customCarousel2" data-slide-to="0" class="active"></li>
+        <li data-target="#customCarousel2" data-slide-to="1"></li>
+        <li data-target="#customCarousel2" data-slide-to="2"></li>
+      </ol>
+    </div>
+  </section>
+  <!-- end about section -->
+{% endblock %}

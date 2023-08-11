@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Login </title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../static/css/style.css">
+                
+        <!-- Boxicons CSS -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+                        
+    </head>
+    <body>
+        <section class="contlog forms">
+            <div class="form login">
+                <div class="form-content">
+                    <hl>Iniciar Sesion</hl>
+                    <form action="#">
+                        <div class="field input-field">
+                            <input type="email" placeholder="Correo" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Contraseña" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+
+                        <div class="field button-field">
+                            <button><a href="{% url 'home' %}" class="">Acceder</a></button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Aún no tienes cuenta? <a href="#" class="link signup-link">Registrarse</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="../static/img/google.png" alt="" class="google-img">
+                        <span>Iniciar sesion con Google</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Signup Form -->
+
+            <div class="form signup">
+                <div class="form-content">
+                    <hl>Crear Cuenta</hl>
+                    <form action="#">
+                        <div class="field input-field">
+                            <input type="email" placeholder="Correo" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Contraseña" class="password">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Confirmar contraseña" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="field button-field">
+                            <button>Registrarse</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Ya tienes una cuenta? <a href="#" class="link login-link">Iniciar Sesion</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="../static/img/google.png" alt="" class="google-img">
+                        <span>Iniciar eesion con Google</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- JavaScript -->
+        <script src="../static/java/script.js"></script>
+    </body>
+</html>

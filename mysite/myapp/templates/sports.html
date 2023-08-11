@@ -1,0 +1,88 @@
+{%  extends 'base.html' %}
+{% block titulo %}Deportes{% endblock %}
+
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container ">
+        <div class="heading_container">
+          <h2>
+            Deportes Individuales
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="../static/img/s3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ajedrez
+                </h5>
+                <p>
+                  Juego de estrategia y habilidades tácticas, y ha sido considerado como un deporte intelectual, ya que requiere pensamiento estratégico y planificación para tener éxito.
+                </p>
+                <a href="">
+                  Ir a
+                </a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="service_container">
+      <div class="container ">
+        <div class="heading_container">
+          <h2>
+            Deportes En Equipos
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="../static/img/s1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Futbol
+                </h5>
+                <p>
+                  El deporte más popular del mundo y se juega en numerosos países en diferentes niveles, desde aficionados hasta profesionales.
+                </p>
+                <a href="{% url 'futbol' %}">
+                  Ir a
+                </a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- end service section -->
+{% endblock %}
+```

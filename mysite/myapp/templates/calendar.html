@@ -1,0 +1,20 @@
+{%  extends 'base.html' %}
+{% block titulo %}Calendario{% endblock %}
+
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}

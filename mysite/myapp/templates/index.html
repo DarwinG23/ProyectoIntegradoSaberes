@@ -1,0 +1,351 @@
+{%  extends 'base.html' %}
+{% block titulo %}Dezz - SportApp{% endblock %}
+
+{% block barra %}
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+    <!-- slider section -->
+    <section class="slider_section" >
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="detail-box">
+                    <h1>
+                      ARCHITECT <br>
+                      BUILDER CONSTRUCTION <br>
+                      SERVICES
+                    </h1>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="detail-box">
+                    <h1>
+                      ARCHITECT <br>
+                      BUILDER CONSTRUCTION <br>
+                      SERVICES
+                    </h1>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="detail-box">
+                    <h1>
+                      ARCHITECT <br>
+                      BUILDER CONSTRUCTION <br>
+                      SERVICES
+                    </h1>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="detail-box">
+                    <h1>
+                      ARCHITECT <br>
+                      BUILDER CONSTRUCTION <br>
+                      SERVICES
+                    </h1>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="detail-box">
+                    <h1>
+                      ARCHITECT <br>
+                      BUILDER CONSTRUCTION <br>
+                      SERVICES
+                    </h1>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+          <li data-target="#customCarousel1" data-slide-to="3"></li>
+          <li data-target="#customCarousel1" data-slide-to="4"></li>
+        </ol>
+      </div>
+     </div>
+    </section>
+    <!-- end slider section -->
+
+
+
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container ">
+        <div class="heading_container">
+          <h2>
+            Deportes
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="../static/img/s1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Futbol
+                </h5>
+                <p>
+                  El deporte más popular del mundo y se juega en numerosos países en diferentes niveles, desde aficionados hasta profesionales.
+                </p>
+                <a href="">
+                  Ir a
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="../static/img/s2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Baloncesto
+                </h5>
+                <p>
+                  Destacado por su ritmo rápido, movimiento constante y habilidades de driblar, pasar y disparar. Es ampliamente practicado y disfrutado en todo el mundo.
+                </p>
+                <a href="">
+                  Ir a
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="../static/img/s3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ajedrez
+                </h5>
+                <p>
+                  Juego de estrategia y habilidades tácticas, y ha sido considerado como un deporte intelectual, ya que requiere pensamiento estratégico y planificación para tener éxito.
+                </p>
+                <a href="">
+                  Ir a
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="../static/img/s4.png" alt="">
+              </div>
+              <h5>
+                ㅤ
+              </h5>
+              <a class="btn btn-outline-dark" href="{% url 'sports' %}" role="button">
+                Mas Deportes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end service section -->
+
+ <!-- project section -->
+
+ <section class="project_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Noticias
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- end project section -->
+
+
+  <!-- why us section -->
+
+  <section class="why_us_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Why Choose Us?
+        </h2>
+      </div>
+      <div class="why_us_container">
+        <div class="box">
+          <div class="img-box">
+            <img src="static/images/w1.png" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Project done on time
+            </h5>
+            <p>
+              Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+              Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+              going through the
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img-box">
+            <img src="static/images/w2.png" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Always avaliable
+            </h5>
+            <p>
+              Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+              Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+              going through the
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img-box">
+            <img src="static/images/w3.png" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Professional and responsible
+            </h5>
+            <p>
+              Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+              Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+              going through the
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          Read More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end why us section -->
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding-bottom">
+    <div class="container-fluid">
+      <div class="col-lg-4 col-md-5 offset-md-1">
+        <div class="heading_container">
+          <h2>
+            Institucion Responsable
+          </h2>
+          <h3>
+            Universidad Nacional de Loja
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 col-md-5 offset-md-1">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+{% endblock %}
