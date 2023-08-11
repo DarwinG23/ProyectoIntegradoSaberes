@@ -188,9 +188,5 @@ def sports(request):
 
 def news(request):
     return render(request, 'news.html')
-
-def calendar(request):
-    return render(request, 'calendar.html')
-
 def futbol(request):
     return render(request, 'futbol.html')

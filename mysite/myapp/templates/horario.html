@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
 
 
-{% block content %}
+
+{% block contenido %}
        {% for horario in horarios  %}
-           <h1 style="color: aliceblue">Horario de {{ horario.deporte.nombre }}</h1>
+           <h1>Horario de {{ horario.deporte.nombre }}</h1>
            <p style="color: aliceblue">NUMERO DE CANCHAS: {{ horario.numCanchas }}</p>
            <table class="table table-success table-striped" >
                 <thead>

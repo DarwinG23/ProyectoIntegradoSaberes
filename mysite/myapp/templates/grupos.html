@@ -1,20 +1,37 @@
 {% extends 'base.html' %}
 
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
 
-{% block content %}
-    <div class="row mx-5 card-grid">
-         por cada deporte
+
+{% block contenido %}
+    <div class="row mx-1 card-grid">
          {% for deporte in deportes %}
              {% if deporte.grupo_set.all %}
-                 <h1 style="color: aliceblue">Grupos de {{ deporte.nombre }}</h1>
+                 <h1>Grupos de {{ deporte.nombre }}</h1>
                  {% for grupo in deporte.grupo_set.all %}
                    <div class="col">
-                      <div class="card my-4" style="width: 18rem; display: grid;">
+                      <div class="card my-4 bg-success" style="width: 18rem; display: grid;">
                            <div class="card-body">
                                <h4>{{ grupo.nombre }}</h4>
                               {% for equipo in grupo.equipo_set.all %}
                                  <hr>
-                                 <p class="mx-3">{{ equipo.nombre }}</p>
+                                 <p class="mx-2">{{ equipo.nombre }}</p>
                               {% endfor %}
                                <hr>
                            </div>

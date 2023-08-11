@@ -1,5 +1,6 @@
 {%  extends 'base.html' %}
 {% block titulo %}Noticias{% endblock %}
+{% load static %}
 
 {% block barra %}
     <li class="nav-item">
@@ -12,7 +13,7 @@
       <a class="nav-link" href="{% url 'news' %}">Noticias</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
@@ -48,7 +49,7 @@
           <div class="item painting">
             <div class="box">
               <div class="img-box">
-                <img src="../static/img/project1.jpg" alt="" />
+                <img src="{% static 'img/project1.jpg' %}" alt="" />
                 <a href="" class="pin_link">
                   <i class="fa fa-link" aria-hidden="true"></i>
                 </a>
@@ -67,7 +68,7 @@
           <div class="item reconstruction">
             <div class="box">
               <div class="img-box">
-                <img src="../static/img/project2.jpg" alt="" />
+                <img src="{% static 'img/project2.jpg' %}" alt="" />
                 <a href="" class="pin_link">
                   <i class="fa fa-link" aria-hidden="true"></i>
                 </a>
@@ -86,7 +87,7 @@
           <div class="item repair">
             <div class="box">
               <div class="img-box">
-                <img src="../static/img/project1.jpg" alt="" />
+                <img src="{% static 'img/project1.jpg' %}" alt="" />
                 <a href="" class="pin_link">
                   <i class="fa fa-link" aria-hidden="true"></i>
                 </a>
@@ -105,7 +106,7 @@
           <div class="item residential">
             <div class="box">
               <div class="img-box">
-                <img src="../static/img/project1.jpg" alt="" />
+                <img src="{% static 'img/project1.jpg' %}" alt="" />
                 <a href="" class="pin_link">
                   <i class="fa fa-link" aria-hidden="true"></i>
                 </a>
@@ -124,7 +125,7 @@
           <div class="item styling">
             <div class="box">
               <div class="img-box">
-                <img src="../static/img/project1.jpg" alt="" />
+                <img src="{% static 'img/project1.jpg' %}" alt="" />
                 <a href="" class="pin_link">
                   <i class="fa fa-link" aria-hidden="true"></i>
                 </a>
@@ -144,7 +145,6 @@
       </div>
     </div>
   </section>
-
   <!-- end project section -->
 {% endblock %}
 ```

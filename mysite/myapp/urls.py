@@ -21,7 +21,6 @@ urlpatterns = [
     path('crear/', views.crear, name='crear'),
     path('', views.home, name='home'),
     path('about', views.about, name='about'),
-    path('calendar', views.calendar, name='calendar'),
     path('news', views.news, name='news'),
     path('sports', views.sports, name='sports'),
     path('futbol', views.futbol, name='futbol'),
