@@ -1251,12 +1251,20 @@ a:focus {
     font-family: 'Poppins', sans-serif;
 }
 .contlog{
-    height: 100vh;
+    height: 79.30vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to bottom right, #007bffa5, #d6169da7)
+    background: linear-gradient(to bottom, #ffffff, #f2cdf38e)
+}
+.contreg{
+    height: 130vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #ffffff, #f2cdf38e)
 }
 .form{
     position: absolute;
@@ -1264,7 +1272,7 @@ a:focus {
     width: 100%;
     padding: 30px;
     border-radius: 6px;
-    background: #ffffff3d
+    background: linear-gradient(to bottom right, #5dabff64, #d963b58e)
 }
 .form.signup{
     opacity: 0;

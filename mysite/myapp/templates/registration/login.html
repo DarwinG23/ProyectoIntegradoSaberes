@@ -10,27 +10,51 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Grupos' %}">Grupos</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="{% url 'news' %}">Noticias</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
     </li>
 {% endblock %}
 
+
 {% block contenido %}
-         <form method="Post">
-        {% csrf_token %}
-        <div class="card mx-auto" style="width: 30rem;">
-            <div class="card-body">
-                <h5 class="card-title">Ingrese su datos</h5>
-                {{ form|crispy }}
-                <button class="btn btn-sm btn-primary" type="submit">Iniciar sesión</button>
+ <form method="Post">
+    <section class="contlog forms">
+             {% csrf_token %}
+            <div class="form login" >
+                <div class="form-content">
+                    <hl>Iniciar Sesion</hl>
+                    {{ form|crispy }}
+                    <div class="field button-field" type="submit">
+                        <button>Acceder</button>
+                    </div>
+                    <div class="form-link">
+                        <span>Aún no tienes cuenta? <a href="{% url 'registro' %}">Registrarse</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="{% static 'img/google.png' %}" alt="" class="google-img">
+                        <span>Iniciar sesion con Google</span>
+                    </a>
+                </div>
             </div>
-        </div>
-    </form>
+    </section>
+ </form>
 {% endblock %}
+
 ```

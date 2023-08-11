@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% load crispy_forms_tags %}
 
@@ -9,11 +10,17 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Grupos' %}">Grupos</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="{% url 'news' %}">Noticias</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
@@ -21,9 +28,30 @@
 {% endblock %}
 
 {% block contenido %}
-    <form method="Post">
-        {% csrf_token %}
-        {{ form|crispy }}
+ <form method="Post">
+    <section class="contreg forms">
+         {% csrf_token %}
+            <div class="form login" >
+                <div class="form-content">
+                    <hl>Crear Cuenta</hl>
+                    {{ form|crispy }}
+                    <div class="field button-field" type="submit">
+                        <button>Registrarse</button>
+                    </div>
+                    <div class="form-link">
+                        <span>Ya tienes cuenta? <a href="{% url 'login' %}">Iniciar Sesion</a></span>
+                    </div>
+                </div>
 
-    </form>
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="{% static 'img/google.png' %}" alt="" class="google-img">
+                        <span>Registrarse con Google</span>
+                    </a>
+                </div>
+            </div>
+    </section>
+ </form>
 {% endblock %}
