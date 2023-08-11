@@ -1,21 +1,86 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% load crispy_forms_tags %}
 
-{% block content %}
-    <h1>INICIO DE SESIÓN</h1>
-    <br>
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
 
-    <form method="Post">
-        {% csrf_token %}
-        <div class="card mx-auto" style="width: 30rem;">
-            <div class="card-body">
-                <h5 class="card-title">Ingrese su datos</h5>
-                {{ form|crispy }}
-                <button class="btn btn-sm btn-primary" type="submit">Iniciar sesión</button>
+{% block contenido %}
+    {% csrf_token %}
+        <section class="contlog forms">
+            <div class="form login">
+                <div class="form-content">
+                    <hl>Iniciar Sesion</hl>
+                        {{ form|crispy }}
+                    <div class="form-link">
+                        <span>Aún no tienes cuenta? <a href="#" class="link signup-link">Registrarse</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="{% static 'img/google.png' %}" alt="" class="google-img">
+                        <span>Iniciar sesion con Google</span>
+                    </a>
+                </div>
             </div>
-        </div>
 
-    </form>
+            <!-- Signup Form -->
+
+            <div class="form signup">
+                <div class="form-content">
+                    <hl>Crear Cuenta</hl>
+                    <form action="#">
+                        <div class="field input-field">
+                            <input type="email" placeholder="Correo" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Contraseña" class="password">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Confirmar contraseña" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="field button-field">
+                            <button>Registrarse</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Ya tienes una cuenta? <a href="#" class="link login-link">Iniciar Sesion</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="{% static 'img/google.png' %}" alt="" class="google-img">
+                        <span>Iniciar eesion con Google</span>
+                    </a>
+                </div>
+            </div>
+        </section
 {% endblock %}
 ```

@@ -2,19 +2,28 @@
 
 {% load crispy_forms_tags %}
 
-{% block content %}
-    <h1>REGISTRO DE USUARIO</h1>
-    <br>
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'calendar' %}">Calendario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
 
+{% block contenido %}
     <form method="Post">
         {% csrf_token %}
-        <div class="card mx-auto" style="width: 30rem;">
-            <div class="card-body">
-                <h5 class="card-title">Complete todos los campos</h5>
-                {{ form|crispy }}
-                <button class="btn btn-sm btn-primary" type="submit">Registrarse</button>
-            </div>
-        </div>
+        {{ form|crispy }}
 
     </form>
 {% endblock %}
