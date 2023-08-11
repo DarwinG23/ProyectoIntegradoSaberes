@@ -4775,6 +4775,10 @@ input[type="button"].btn-block {
   overflow: hidden;
 }
 
+.accordion > .card {
+  overflow: hidden;
+}
+
 .accordion > .card:not(:first-of-type) .card-header:first-child {
   border-radius: 0;
 }

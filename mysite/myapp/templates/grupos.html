@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block barra %}
     <li class="nav-item">
@@ -24,32 +25,39 @@
     </li>
 {% endblock %}
 
-
 {% block contenido %}
-<div class="row mx-1 card-grid">
-    <div class="col-12">
-        {% for deporte in deportes %}
-            {% if deporte.grupo_set.all %}
-                <h1>Grupos de {{ deporte.nombre }}</h1>
-                <div class="row">
-                    {% for grupo in deporte.grupo_set.all %}
-                        <div class="col-md-4">
-                            <div class="card my-4 bg-success" style="width: 18rem; display: grid;">
-                                <div class="card-body">
-                                    <h4>{{ grupo.nombre }}</h4>
-                                    {% for equipo in grupo.equipo_set.all %}
-                                        <hr>
-                                        <p class="mx-2">{{ equipo.nombre }}</p>
-                                    {% endfor %}
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+<section class="service_section layout_padding">
+{% for deporte in deportes %}
+  {% if deporte.grupo_set.all %}
+    <div class="service_container">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Grupos de {{ deporte.nombre }}
+          </h2>
+        </div>
+        <div class="accordion" id="accordion-{{ deporte.id }}">
+          {% for grupo in deporte.grupo_set.all %}
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ grupo.id }}" aria-expanded="false" aria-controls="collapse-{{ grupo.id }}">
+                  <strong>{{ grupo.nombre }}</strong>
+                </button>
+              </h2>
+              <div id="collapse-{{ grupo.id }}" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  {% for equipo in grupo.equipo_set.all %}
+                    {{ equipo.nombre }}
+                  {% endfor %}
                 </div>
-            {% endif %}
-        {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-</div>
+  {% endif %}
+{% endfor %}
+</section>
 {% endblock %}
 ```
