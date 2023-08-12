@@ -18,22 +18,19 @@
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
     </li>
-
-    {% if user.is_authenticated and user.is_staff %}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Crear
-            </a>
-           <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
-              <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
-              <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
-             <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
-           </ul>
-       </li>
-    {% endif %}
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Crear
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
+        <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
+        <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
+        <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
+      </ul>
+    </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
     </li>
@@ -42,26 +39,45 @@
 
 
 {% block contenido %}
-       {% for horario in horarios  %}
-           <h1>Horario de {{ horario.deporte.nombre }}</h1>
-           <p style="color: aliceblue">NUMERO DE CANCHAS: {{ horario.numCanchas }}</p>
-           <table class="table table-success table-striped" >
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        <th>Partido</th>
-                        <th>Cancha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for partido in horario.partido_set.all %}
-                        <tr>
-                            <td>{{ partido.numFecha }}</td>
-                            <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
-                            <td>{{ partido.cancha }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-           </table>
-       {% endfor %}
+<section class="service_section layout_padding">
+ <div class="service_container">
+  <div class="container ">
+<div class="nav nav-tabs" id="horarios-tab" role="tablist">
+  {% for horario in horarios %}
+    <button class="nav-link {% if forloop.first %}active{% endif %}" id="horario-{{ horario.id }}-tab" data-bs-toggle="tab" data-bs-target="#horario-{{ horario.id }}" type="button" role="tab" aria-controls="horario-{{ horario.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+      <h5 style="color: #0f0700">  Horario de {{ horario.deporte.nombre }} </h5>
+    </button>
+  {% endfor %}
+</div>
+
+<div class="tab-content" id="horarios-tab-content">
+  {% for horario in horarios %}
+    <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="horario-{{ horario.id }}" role="tabpanel" aria-labelledby="horario-{{ horario.id }}-tab" tabindex="0">
+        <strong><p style="color: #0f0700">Numero de canchas: {{ horario.numCanchas }}</p></strong>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Dia Fecha</th>
+            <th>Hora</th>
+            <th>Encuentro</th>
+            <th>Cancha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for partido in horario.partido_set.all %}
+            <tr>
+              <td>{{ partido.numFecha }}</td>
+              <td>{{ partido.hora }}</td>
+              <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
+              <td>{{ partido.cancha }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+</div>
+    </div>
+  </div>
+</section>
 {% endblock %}

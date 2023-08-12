@@ -20,21 +20,19 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
     </li>
-     {% if user.is_authenticated and user.is_staff %}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Crear
-            </a>
-           <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
-              <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
-              <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
-             <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
-           </ul>
-       </li>
-    {% endif %}
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Crear
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
+        <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
+        <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
+        <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
+      </ul>
+    </li>
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
     </li>
@@ -53,7 +51,7 @@
               </h2>
             </div>
             <p>
-              Aplicacion de seguimiento de competencias deportivas que permita al usuario ver la informacion de disintinas competencias, como sus tabla de posiciones, fechas, resultados, equipos y jugadores, divididas por temporada-competencia-encuentro. Ademas de mostrar diferentes tipos de deportes, tanto individuales como por Equipos. Ademas, ofrece la funcion para realizar apuestas con las predicciones de los distintos partidos de los diveferentes deportes.
+              Aplicacion de seguimiento de competencias deportivas que permita al usuario ver la informacion de disintinas competencias, como sus tabla de posiciones, fechas, resultados, equipos y jugadores, divididas por temporada-competencia-encuentro. Ademas de mostrar diferentes tipos de deportes, tanto individuales como por Equipos.
             </p>
             <a href="https://stevenlunag.github.io/AplicacionSeguimientoCompetenciasDeportivas/index.html">
               Pagina de Desarrollo
@@ -97,7 +95,7 @@
                       <i class="fa fa-quote-left" aria-hidden="true"></i>
                     </div>
                     <p>
-                      Estudiante de computacion en la Univesidad Nacional de Loja. Poseo conocimiento en disintitos programas de deiseño y edicion multimedia, asi como en distintos lenguajes de programacion.
+                      Estudiante de computacion en la Univesidad Nacional de Loja. Poseo conocimiento en disintitos programas de diseño y edicion multimedia, asi como en distintos lenguajes de programacion.
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
@@ -105,6 +103,40 @@
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="https://github.com/StevenLunaG"><img src="{% static 'img/git.png' %}" alt=""> github.com/StevenLunaG</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'img/darwin.jpg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Darwin E. Granda O.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante en la carrera de computacion.
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> darwin.granda@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/DarwinG23"><img src="{% static 'img/git.png' %}" alt=""> github.com/DarwinG23</a>
                       </li>
                     </ul>
                   </div>
@@ -156,6 +188,40 @@
               <div class="col-md-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
+                    <img src="{% static 'img/alex.jpeg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Alexander A. Sanchez A.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante en la carrera de computacion.
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> alexander.a.sanchez@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Alexander-cloud-CPU"><img src="{% static 'img/git.png' %}" alt=""> github.com/Alexander-cloud-CPU</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
                     <img src="{% static 'img/Deivy.jpg' %}" alt="">
                   </div>
                   <div class="detail-box">
@@ -168,7 +234,7 @@
                       <i class="fa fa-quote-left" aria-hidden="true"></i>
                     </div>
                     <p>
-                      Estudiante en la carrera de computacion con muchas ganas de aprender cosas nuevas y obtener nuevas habilidades. 
+                      Estudiante en la carrera de computacion con muchas ganas de aprender cosas nuevas y obtener nuevas habilidades.
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
@@ -187,11 +253,83 @@
             </div>
           </div>
         </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'img/elias.jpeg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Elias S. Poma G.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante en la carrera de computacion.
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> elias.poma@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Elia700"><img src="{% static 'img/git.png' %}" alt=""> github.com/Elia700</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'img/jhon.jpeg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Jhon R. Rojas M.
+                        </h5>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Estudiante en la carrera de computacion.
+                    </p>
+                    <ul class="nav justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"><img src="{% static 'img/mail.png' %}" alt=""> jhon.rojas@unl.edu.ec</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Jhonzu69"><img src="{% static 'img/git.png' %}" alt=""> github.com/Jhonzu69</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <ol class="carousel-indicators">
         <li data-target="#customCarousel2" data-slide-to="0" class="active"></li>
         <li data-target="#customCarousel2" data-slide-to="1"></li>
         <li data-target="#customCarousel2" data-slide-to="2"></li>
+        <li data-target="#customCarousel2" data-slide-to="3"></li>
+        <li data-target="#customCarousel2" data-slide-to="4"></li>
+        <li data-target="#customCarousel2" data-slide-to="5"></li>
+        <li data-target="#customCarousel2" data-slide-to="6"></li>
       </ol>
     </div>
   </section>
