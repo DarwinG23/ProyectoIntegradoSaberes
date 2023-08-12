@@ -1,5 +1,9 @@
+import os
+
 from django.db.models import Max
 from django.shortcuts import render
+from google_auth_oauthlib.flow import Flow
+
 from .forms import *  #importa todos los formularios
 from .models import *  #importa todos los modelos
 from django.shortcuts import redirect
@@ -210,7 +214,7 @@ def futbol(request):
     return render(request, 'futbol.html')
 
 
-def usuario(request):
+def subirVideo(request):
     if request.method == 'POST':
         form = VideoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -220,11 +224,33 @@ def usuario(request):
             return redirect('usuario')  # Redirige a la misma página después de cargar el video
     else:
         form = VideoForm()
-    return render(request, 'usuario.html', {'form': form})
+    return render(request, 'subirVideo.html', {'form': form})
 
 
 @login_required
 def perfilUsuario(request):
     videos = Video.objects.filter(user=request.user)
     return render(request, 'perfilUsuario.html', {'videos': videos})
+
+
+
+def autenticar(request):
+    # Obtén la ruta completa al archivo JSON de secretos de cliente
+    secrets_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credenciales', 'Yt.json')
+
+    # Configura el flujo de autenticación
+    flow = Flow.from_client_secrets_file(
+        secrets_file_path,
+        scopes=['https://www.googleapis.com/auth/youtube.upload'],
+        redirect_uri='http://localhost:5000/subirVideo'
+    )
+
+    # Genera la URL de autorización y redirige al usuario
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true'
+    )
+
+    # Redirige al usuario a la URL de autorización
+    return redirect(authorization_url)
 

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+
+
+
+{% block contenido %}
+    <h1>Autenticación con Google</h1>
+    <p>Por favor, haz clic en el siguiente enlace para autenticarte con tu cuenta de Google:</p>
+    <a href="{% url 'autenticar' %}">Autenticarse con Google</a>
+{% endblock %}

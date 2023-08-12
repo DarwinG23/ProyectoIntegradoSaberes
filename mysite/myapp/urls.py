@@ -24,6 +24,8 @@ urlpatterns = [
     path('news', views.news, name='news'),
     path('sports', views.sports, name='sports'),
     path('futbol', views.futbol, name='futbol'),
-    path('usuario/', views.usuario, name='usuario'),
+    path('subirVideo/', views.subirVideo, name='subirVideo'),
     path('perfil/', views.perfilUsuario, name='perfilUsuiaro'),
+    path('autenticar/', views.autenticar, name='autenticar'),
+
 ]
