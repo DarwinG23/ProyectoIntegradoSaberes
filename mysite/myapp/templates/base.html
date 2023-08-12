@@ -6,6 +6,8 @@
 
 <head>
   {% load static %}
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -63,7 +65,37 @@
                   </ul>
                   <ul class="nav justify-content-end">
                       <a class="nav-link" href="{% url 'login' %}">
-                          <img src="{% static 'img/user_icon.png' %}" alt="">
+                          <div class="usuario">
+                              <span id="usuario">Alexander Antonio Sánchez Azuero</span> <ion-icon name="person-sharp"></ion-icon>
+                              <br>
+                              <span id="correo"><b></b>alexander.a.sanchez@unl.edu.ec<b></b></span>
+                              <style>
+                                    .usuario{
+                                        margin-top: 10px;
+                                        margin-left: 70px;
+                                    }
+                                    .usuario ion-icon{
+                                        font-size:30px;
+                                        margin-bottom: -20px;
+                                    }
+
+                                    #usuario{
+                                        color: black;
+                                        font-size: 14px;
+                                        border: 2px solid #763ce7;
+                                        border-radius: 10px;
+                                        font-weight: bold;
+                                        margin-left: -80px;
+                                    }
+                                    #correo{
+                                        color: black;
+                                        font-size: 12px;
+                                        border: 2px solid #763ce7;
+                                        border-radius: 10px;
+                                        margin-left: -80px;
+                                    }
+                              </style>
+                          </div>
                       </a>
                   </ul>
                 </div>
