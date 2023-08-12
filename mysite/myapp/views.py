@@ -5,6 +5,8 @@ from .models import *  #importa todos los modelos
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from googleapiclient.discovery import build
+from django.conf import settings
 
 
 
@@ -187,6 +189,21 @@ def sports(request):
     return render(request, 'sports.html')
 
 def news(request):
-    return render(request, 'news.html')
+    # Crear un servicio de la API de YouTube
+    youtube = build('youtube', 'v3', developerKey=settings.YOUTUBE_API_KEY)
+
+    # Definir el video ID que deseas obtener
+    video_id = 'xtHj5fA_5Fg'  # Cambia esto al video ID que quieras
+
+    # Obtener los detalles del video
+    video_response = youtube.videos().list(
+        part='snippet',
+        id=video_id
+    ).execute()
+
+    video_info = video_response['items'][0]['snippet']
+
+    return render(request, 'news.html', {'video_info': video_info})
+
 def futbol(request):
     return render(request, 'futbol.html')

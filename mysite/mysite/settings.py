@@ -118,6 +118,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+# API YOUTUBE
+YOUTUBE_API_KEY = 'AIzaSyAZjL4h0IXRmOYC2fNmeY1TVGjk0mTRquM'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
