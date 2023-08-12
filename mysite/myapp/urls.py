@@ -24,4 +24,6 @@ urlpatterns = [
     path('news', views.news, name='news'),
     path('sports', views.sports, name='sports'),
     path('futbol', views.futbol, name='futbol'),
+    path('usuario/', views.usuario, name='usuario'),
+    path('perfil/', views.perfilUsuario, name='perfilUsuiaro'),
 ]

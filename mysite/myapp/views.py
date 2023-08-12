@@ -7,6 +7,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from googleapiclient.discovery import build
 from django.conf import settings
+from googleapiclient.http import MediaFileUpload
 
 
 
@@ -207,3 +208,23 @@ def news(request):
 
 def futbol(request):
     return render(request, 'futbol.html')
+
+
+def usuario(request):
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            video = form.save(commit=False)
+            video.user = request.user  # Asigna el usuario actual al video
+            video.save()
+            return redirect('usuario')  # Redirige a la misma página después de cargar el video
+    else:
+        form = VideoForm()
+    return render(request, 'usuario.html', {'form': form})
+
+
+@login_required
+def perfilUsuario(request):
+    videos = Video.objects.filter(user=request.user)
+    return render(request, 'perfilUsuario.html', {'videos': videos})
+

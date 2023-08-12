@@ -13,5 +13,6 @@ admin.site.register(Grupo)
 admin.site.register(Competidor)
 admin.site.register(Partido)
 admin.site.register(Horario)
+admin.site.register(Video)
 
 

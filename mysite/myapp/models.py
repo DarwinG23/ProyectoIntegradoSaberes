@@ -1,4 +1,6 @@
 from datetime import time
+
+from django.contrib.auth.models import User
 from django.db import models
 import random
 from random import shuffle
@@ -263,7 +265,14 @@ class Partido(models.Model):
         return str(self.equipo_local.nombre) + " vs " + str(self.equipo_visitante.nombre) + " - " + str(self.Grupo.nombre)
 
 
+class Video(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    video_file = models.FileField(upload_to='videos/')  # Cambia 'videos/' por la ruta deseada para guardar los videos
 
+    def __str__(self):
+        return self.title
 
 
 
