@@ -64,39 +64,48 @@
                       {% endblock %}
                   </ul>
                   <ul class="nav justify-content-end">
-                      <a class="nav-link" href="{% url 'login' %}">
-                          <div class="usuario">
-                              <span id="usuario">Alexander Antonio Sánchez Azuero</span> <ion-icon name="person-sharp"></ion-icon>
-                              <br>
-                              <span id="correo"><b></b>alexander.a.sanchez@unl.edu.ec<b></b></span>
-                              <style>
-                                    .usuario{
-                                        margin-top: 10px;
-                                        margin-left: 70px;
-                                    }
-                                    .usuario ion-icon{
-                                        font-size:30px;
-                                        margin-bottom: -20px;
-                                    }
+                          {% if request.user.is_authenticated %}
+                              <a class="nav-link" href="{% url 'salir' %}">
+                                <div class="usuario">
+                                    <span id="usuario">{{ user.username | upper }}</span> <ion-icon name="person-sharp"></ion-icon>
+                                    <br>
+                                    <span id="correo"><b></b>{{ user.email}}<b></b></span>
+                                   <style>
+                                       .usuario{
+                                         margin-top: -20px;
+                                         margin-left: 70px;
+                                       }
+                                       .usuario ion-icon{
+                                         font-size:30px;
+                                         margin-bottom: -10px;
+                                       }
 
-                                    #usuario{
-                                        color: black;
-                                        font-size: 14px;
-                                        border: 2px solid #763ce7;
-                                        border-radius: 10px;
-                                        font-weight: bold;
-                                        margin-left: -80px;
+                                       #usuario{
+                                         color: black;
+                                         font-size: 14px;
+                                         font-weight: bold;
+                                         margin-left: -80px;
+                                       }
+                                       #correo{
+                                          color: black;
+                                          font-size: 12px;
+                                          margin-left: -100px;
+                                       }
+                                   </style>
+                                </div>
+                              </a>
+                          {% else %}
+                              <a class="nav-link" href="{% url 'login' %}">
+                                <ion-icon name="person-sharp" ></ion-icon>
+                                <style>
+                                    ion-icon{
+                                        font-size:30px;
                                     }
-                                    #correo{
-                                        color: black;
-                                        font-size: 12px;
-                                        border: 2px solid #763ce7;
-                                        border-radius: 10px;
-                                        margin-left: -80px;
-                                    }
-                              </style>
-                          </div>
-                      </a>
+                                </style>
+                              </a>
+
+                          {% endif %}
+
                   </ul>
                 </div>
               </nav>
