@@ -1,33 +1,21 @@
-{% extends 'base.html' %}
-
-{% block barra %}
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
-    </li>
-{% endblock %}
+{% extends "base_crear.html" %}
 
 {% block contenido %}
-    <h1>Jugador</h1>
-    <p> Ingrese los datos del jugador!</p>
-    <form  method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+
+<section class="contcrea forms">
+        <div class="formcrea login" >
+            <div class="form-content">
+                <hl>Jugador</hl>
+                <h5>Ingrese los datos del jugador:</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="field button-field" type="submit">
+                        <button>Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</section>
 {% endblock %}
 ```

@@ -1,35 +1,21 @@
-{% extends 'base.html' %}
-<!-- Generacion de horarios -->
-
-{% block barra %}
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
-    </li>
-{% endblock %}
+{% extends "base_crear.html" %}
 
 {% block contenido %}
-    <h2>Ingrese los datos para el horario</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-sm btn-dark">
-          crear
-        </button>
-    </form>
+
+<section class="contcrea forms">
+        <div class="formcrea login" >
+            <div class="form-content">
+                <hl>Horario</hl>
+                <h5>Ingrese los datos para el horario:</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="field button-field" type="submit">
+                        <button>Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</section>
 {% endblock %}
 ```

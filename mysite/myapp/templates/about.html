@@ -1,6 +1,9 @@
 {%  extends 'base.html' %}
-{% block titulo %}Acerca de{% endblock %}
 {%  load static %}
+
+{% block titulo %}Acerca de{% endblock %}
+
+
 {% block barra %}
     <li class="nav-item">
       <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
@@ -8,22 +11,33 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
     </li>
-     <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" href="{% url 'ver Grupos' %}">Grupos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'news' %}">Noticias</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'ver Horario' %}">Horario</a>
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
     </li>
-     <li class="nav-item">
-      <a class="nav-link" href="{% url 'crear' %}">Crear</a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Crear
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
+        <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
+        <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
+        <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
+      </ul>
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
     </li>
 {% endblock %}
+
 {% block contenido %}
   <!-- about section -->
   <section class="about_section layout_padding">
