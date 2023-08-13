@@ -47,8 +47,7 @@ def crearTemp(request):
             fechaFin = form.cleaned_data['fechaFin']
             competencia = form.cleaned_data['competencia']
             modalidad = form.cleaned_data['modalidad']
-            deportes = form.cleaned_data['deportes']
-            Temporada.objects.create(nombre=nombre, descripcion=descripcion, fechaInicio=fechaInicio, fechaFin=fechaFin, competencia=competencia, modalidad=modalidad, deportes=deportes)
+            Temporada.objects.create(nombre=nombre, descripcion=descripcion, fechaInicio=fechaInicio, fechaFin=fechaFin, competencia=competencia, modalidad=modalidad)
    return redirect('crearTemp')
 
 
@@ -141,7 +140,10 @@ def crearGrup(request):
 @login_required
 def verHorario(request):
     horarios = Horario.objects.all()
-    return render(request, 'Horario.html', {'horarios': horarios})
+    competencias = Competencia.objects.all()
+    temporadas = Temporada.objects.all()
+    deportes = Deporte.objects.all()
+    return render(request, 'Horario.html', {'horarios': horarios, 'competencias': competencias, 'temporadas': temporadas, 'deportes': deportes})
 
 
 def verEquipos(request):

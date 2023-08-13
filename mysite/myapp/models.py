@@ -29,7 +29,7 @@ class Temporada(models.Model):
 
     #Relaciones
     competencia = models.ForeignKey(Competencia, on_delete=models.DO_NOTHING, null=False, blank=False)
-    modalidad = models.OneToOneField('Modalidad', on_delete=models.DO_NOTHING, null=False, blank=False, default=None)
+    modalidad = models.ForeignKey('Modalidad', on_delete=models.DO_NOTHING, null=False, blank=False, default=None, unique=False)
 
     def __str__(self):
         return self.nombre + " - " + self.competencia.nombre
