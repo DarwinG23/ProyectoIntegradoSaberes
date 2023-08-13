@@ -39,8 +39,8 @@
 {% endblock %}
 
 {% block contenido %}
-
     <h1>Subir Video a YouTube</h1>
+    <p>Estás autenticado con la cuenta: {{ channel_name }}</p>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

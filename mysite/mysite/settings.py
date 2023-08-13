@@ -122,8 +122,7 @@ USE_TZ = True
 GOOGLE_OAUTH2_CLIENT_ID = '513877884838-9gknranj4i3di6vgd6unk260h3f4nb7s.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET = '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'
 
-# API YOUTUBE
-YOUTUBE_API_KEY = 'AIzaSyAZjL4h0IXRmOYC2fNmeY1TVGjk0mTRquM'
+
 
 
 # Static files (CSS, JavaScript, Images)

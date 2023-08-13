@@ -243,7 +243,7 @@ def subir_video(request):
         form = SubirVideoForm(request.POST, request.FILES)
         if form.is_valid():
             # Autenticación y creación del servicio de la API de YouTube
-            credentials = Credentials.from_authorized_user_file('ruta/al/archivo/token.json', scopes=['https://www.googleapis.com/auth/youtube.upload'])
+            credentials = Credentials.from_authorized_user_file('myapp/credenciales/YT.json', scopes=['https://www.googleapis.com/auth/youtube.upload'])
             youtube = build('youtube', 'v3', credentials=credentials)
 
             # Detalles del video desde el formulario
