@@ -44,60 +44,62 @@
   <section class="service_section layout_padding">
     <div class="service_container">
       <div class="container ">
-        <div class="heading_container">
-          <h2>
+         <div class="heading_container">
+           <h2>
             Deportes Individuales
           </h2>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-3">
-            <div class="box ">
-              <div class="img-box">
-                <img src="{% static 'img/s3.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Ajedrez
-                </h5>
-                <p>
-                  Juego de estrategia y habilidades tácticas, y ha sido considerado como un deporte intelectual, ya que requiere pensamiento estratégico y planificación para tener éxito.
-                </p>
-                <a href="">
-                  Ir a
-                </a>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
+         </div>
+          {% for deporte in deportes %}
+             {% if deporte.esPorEquipos == False %}
+                 <div class="row">
+                     <div class="col-md-6 col-lg-3">
+                         <div class="box ">
+                            <div class="detail-box">
+                                 <h5>
+                                   {{ deporte.nombre }}
+                                 </h5>
+                                  <p>
+                                    {{ deporte.descripcion }}
+                                  </p>
+                                  <a href="">
+                                     Ir a
+                                  </a>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+             {% endif %}
+          {% endfor %}
       </div>
+    </div>
       <div class="service_container">
-      <div class="container ">
-        <div class="heading_container">
-          <h2>
-            Deportes En Equipos
-          </h2>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-3">
-            <div class="box ">
-              <div class="img-box">
-                <img src="{% static 'img/s1.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Futbol
-                </h5>
-                <p>
-                  El deporte más popular del mundo y se juega en numerosos países en diferentes niveles, desde aficionados hasta profesionales.
-                </p>
-                <a href="{% url 'futbol' %}">
-                  Ir a
-                </a>
-              </div>
+        <div class="container ">
+            <div class="heading_container">
+               <h2>
+                   Deportes en Equipo
+              </h2>
             </div>
-          </div>
-          </div>
+          {% for deporte in deportes %}
+             {% if deporte.esPorEquipos == True %}
+                 <div class="row">
+                     <div class="col-md-6 col-lg-3">
+                         <div class="box ">
+                            <div class="detail-box">
+                                 <h5>
+                                   {{ deporte.nombre }}
+                                 </h5>
+                                  <p>
+                                    {{ deporte.descripcion }}
+                                  </p>
+                                  <a href="">
+                                     Ir a
+                                  </a>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+             {% endif %}
+          {% endfor %}
         </div>
       </div>
   </section>

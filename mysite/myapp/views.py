@@ -192,7 +192,9 @@ def about(request):
     return render(request, 'about.html')
 
 def sports(request):
-    return render(request, 'sports.html')
+    deportes = Deporte.objects.all()
+
+    return render(request, 'sports.html', {'deportes': deportes})
 
 def news(request):
     # Crear un servicio de la API de YouTube
