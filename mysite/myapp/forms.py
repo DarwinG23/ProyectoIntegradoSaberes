@@ -62,7 +62,7 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name' ,'email', 'password1', 'password2']
 
-class VideoForm(forms.ModelForm):
-    class Meta:
-        model = Video
-        fields = ['title', 'description', 'video_file']
+class SubirVideoForm(forms.Form):
+    titulo = forms.CharField(max_length=100)
+    descripcion = forms.CharField(widget=forms.Textarea)
+    archivo = forms.FileField()

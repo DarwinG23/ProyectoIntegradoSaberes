@@ -40,11 +40,11 @@
 
 {% block contenido %}
 
-    <h1>Cargar Video</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Cargar Video</button>
-    </form>
+    <h1>Subir Video a YouTube</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Subir Video</button>
+  </form>
 {% endblock %}
 ```
