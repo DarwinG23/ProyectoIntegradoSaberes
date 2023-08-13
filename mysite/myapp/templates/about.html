@@ -20,19 +20,21 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Crear
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
-        <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
-        <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
-        <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
-      </ul>
-    </li>
+     {% if user.is_authenticated and user.is_staff %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Crear
+            </a>
+           <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
+              <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
+              <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
+             <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
+           </ul>
+       </li>
+    {% endif %}
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
     </li>
@@ -129,7 +131,7 @@
                       <i class="fa fa-quote-left" aria-hidden="true"></i>
                     </div>
                     <p>
-                      Estudiante en la carrera de computacion.
+                      Estudiante apasionado y comprometido en la carrera de computación. Con una mente curiosa y creativa, busca constantemente expandir sus conocimientos y habilidades en el mundo de la tecnología.
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
@@ -271,7 +273,7 @@
                       <i class="fa fa-quote-left" aria-hidden="true"></i>
                     </div>
                     <p>
-                      Estudiante en la carrera de computacion.
+                      Estudiante en la carrera de computación con mucho entusiasmo de salir adelante pese a las adversidades.
                     </p>
                     <ul class="nav justify-content-center">
                       <li class="nav-item">
@@ -331,6 +333,30 @@
         <li data-target="#customCarousel2" data-slide-to="5"></li>
         <li data-target="#customCarousel2" data-slide-to="6"></li>
       </ol>
+    </div>
+  </section>
+    <br><br><br>
+  <section class="contact_section layout_padding-bottom">
+    <div class="container-fluid">
+      <div class="col-lg-4 col-md-5 offset-md-1">
+        <div class="heading_container">
+          <h2>
+            Institucion Responsable
+          </h2>
+          <h3>
+            Universidad Nacional de Loja
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 col-md-5 offset-md-1">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <!-- end about section -->

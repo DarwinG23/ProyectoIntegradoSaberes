@@ -72,33 +72,5 @@
     </div>
   {% endif %}
 {% endfor %}
-
 </section>
-
-<div class="row mx-1 card-grid">
-    <div class="col-12">
-        {% for deporte in deportes %}
-            {% if deporte.grupo_set.all %}
-                <h1>Grupos de {{ deporte.nombre }}</h1>
-                <div class="row">
-                    {% for grupo in deporte.grupo_set.all %}
-                        <div class="col-md-4">
-                            <div class="card my-4 bg-success" style="width: 18rem; display: grid;">
-                                <div class="card-body">
-                                    <h4>{{ grupo.nombre }}</h4>
-                                    {% for equipo in grupo.equipo_set.all %}
-                                        <hr>
-                                        <p class="mx-2">{{ equipo.nombre }}</p>
-                                    {% endfor %}
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
 {% endblock %}
-```
