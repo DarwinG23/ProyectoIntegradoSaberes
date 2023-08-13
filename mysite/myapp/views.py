@@ -1,5 +1,4 @@
-import os
-
+import os, json
 from django.db.models import Max
 from django.shortcuts import render
 from google_auth_oauthlib.flow import Flow
@@ -12,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 from googleapiclient.discovery import build
 from django.conf import settings
 from googleapiclient.http import MediaFileUpload
+from tempfile import NamedTemporaryFile
+import time
 
 
 
@@ -217,33 +218,37 @@ def futbol(request):
 
 def verificarPermiso(request):
     if request.method == 'GET' and 'code' in request.GET:
-        # Obtén la ruta completa al archivo JSON de secretos de cliente
-        secrets_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credenciales', 'Yt.json')
+        secrets_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credenciales', 'YT.json')
 
-        # Deshabilita la validación HTTPS para el flujo de autenticación
         os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-        # Configura el flujo de autenticación
         flow = Flow.from_client_secrets_file(
             secrets_file_path,
             scopes=['https://www.googleapis.com/auth/youtube.upload'],
             redirect_uri='http://localhost:5000/verificarPermiso'
         )
 
-        # Intercambia el código de autorización por un token de acceso y un token de actualización
         flow.fetch_token(authorization_response=request.build_absolute_uri())
+
+        # Guardar las credenciales en un archivo de token
+        with open('token.json', 'w') as token_file:
+            token_file.write(flow.credentials.to_json())
 
         return redirect('subirVideo')
 
-    return render(request, 'index.html')  #
+    return render(request, 'index.html')
 
 
-def subir_video(request):
+@login_required
+def subirVideo(request):
     if request.method == 'POST':
         form = SubirVideoForm(request.POST, request.FILES)
         if form.is_valid():
-            # Autenticación y creación del servicio de la API de YouTube
-            credentials = Credentials.from_authorized_user_file('myapp/credenciales/YT.json', scopes=['https://www.googleapis.com/auth/youtube.upload'])
+            # Obtener las credenciales del archivo de token
+            with open('token.json', 'r') as token_file:
+                token_data = token_file.read()
+            credentials = Credentials.from_authorized_user_info(json.loads(token_data))
+
             youtube = build('youtube', 'v3', credentials=credentials)
 
             # Detalles del video desde el formulario
@@ -258,23 +263,45 @@ def subir_video(request):
                     'description': descripcion
                 },
                 'status': {
-                    'privacyStatus': 'private'
+                    'privacyStatus': 'public'
+
                 }
             }
+            # Guardar el archivo temporalmente en el sistema de archivos
+            with NamedTemporaryFile(delete=False) as temp_file:
+                temp_file.write(archivo.read())
 
             # Subir el archivo de video
-            media = MediaFileUpload(archivo.path, chunksize=-1, resumable=True)
+            media = MediaFileUpload(temp_file.name, chunksize=-1, resumable=True)
             response = youtube.videos().insert(
                 part='snippet,status',
                 body=request_body,
                 media_body=media
             ).execute()
 
+            # Cierra el archivo temporal
+            temp_file.close()
+
+            # Eliminar el archivo temporal después de usarlo
+            os.remove(temp_file.name)
+
+            # Marcar el video como no apto para niños
+            youtube.videos().update(
+                part='status',
+                body={'id': response['id'], 'status': {'selfDeclaredMadeForKids': False}}
+            ).execute()
+
             # Redirigir a la página de éxito o a otra vista
-            return redirect('perfilUsuiaro.html')
+            return redirect('perfilUsuario.html')
+
+        else:
+            form = SubirVideoForm()
+
+        return render(request, 'subirVideo.html', {'form': form})
 
     else:
         form = SubirVideoForm()
+
     return render(request, 'subirVideo.html', {'form': form})
 
 
@@ -287,23 +314,19 @@ def perfilUsuario(request):
 
 
 def autenticar(request):
-    # Obtén la ruta completa al archivo JSON de secretos de cliente
-    secrets_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credenciales', 'Yt.json')
+    secrets_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credenciales', 'YT.json')
 
-    # Configura el flujo de autenticación
     flow = Flow.from_client_secrets_file(
         secrets_file_path,
         scopes=['https://www.googleapis.com/auth/youtube.upload'],
         redirect_uri='http://localhost:5000/verificarPermiso'
     )
 
-    # Genera la URL de autorización y redirige al usuario
     authorization_url, state = flow.authorization_url(
         access_type='offline',
         include_granted_scopes='true'
     )
 
-    # Redirige al usuario a la URL de autorización
     return redirect(authorization_url)
 
 
