@@ -6,12 +6,6 @@
         <div class="formcrea login" >
             <div class="form-content">
                 <hl>Generar Grupos</hl>
-                <h5>Lista de quipos inscritos:</h5>
-                <ol>
-                    {% for equipo in equipos %}
-                    <li>{{equipo.nombre}}</li>
-                    {% endfor %}
-                </ol>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
