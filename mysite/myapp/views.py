@@ -96,7 +96,7 @@ def crearCompetidor(request):
             nombre = form.cleaned_data['nombre']
             equipo = form.cleaned_data['equipo']
             temporada = form.cleaned_data['temporada']
-            Competidor.objects.create(nombre=nombre, equipo=equipo, temporada=temporada)
+            Jugador.objects.create(nombre=nombre, equipo=equipo, temporada=temporada)
             return redirect('crearJug')
 
 

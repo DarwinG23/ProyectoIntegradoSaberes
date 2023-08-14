@@ -14,5 +14,6 @@ admin.site.register(Competidor)
 admin.site.register(Partido)
 admin.site.register(Horario)
 admin.site.register(Video)
+admin.site.register(Jugador)
 
 
