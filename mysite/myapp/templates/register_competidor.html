@@ -41,10 +41,19 @@
 {% endblock %}
 
 {% block contenido %}
-        <h2>Registro de Competidor</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrarse como Competidor</button>
-    </form>
+
+<form method="Post">
+    <section class="contlog forms">
+             {% csrf_token %}
+            <div class="form login" >
+                <div class="form-content">
+                    <hl>Registro de Competidor</hl>
+                    {{ form.as_p }}
+                    <div class="field button-field" type="submit">
+                        <button>Registrarse como Competidor</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+</form>
 {% endblock %}
