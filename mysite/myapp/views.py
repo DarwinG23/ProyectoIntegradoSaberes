@@ -149,7 +149,8 @@ def verHorario(request):
 
 def verEquipos(request):
     equipos = Equipo.objects.all()
-    return render(request, 'equipos.html', {'equipos': equipos})
+    jugadores = Jugador.objects.all()
+    return render(request, 'equipos.html', {'equipos': equipos, 'jugadores': jugadores})
 
 def verCompetidores(request):
     competidores = Competidor.objects.all()

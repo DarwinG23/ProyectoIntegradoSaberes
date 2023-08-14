@@ -1,18 +1,33 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base_sports.html' %}
+{% block contenido %}
+<section class="service_section layout_padding">
+<div class="service_container">
+  <div class="container ">
+    <div class="heading_container">
     <h1> Lista de equipos</h1>
     <div class="row mx-5 card-grid">
        {% for equipo in equipos %}
             <div class="col">
                <div class="card my-4" style="width: 18rem; display: grid;">
-                  <img src="..." class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">{{ equipo.nombre }}</h5>
-                    <p class="card-text">{{ equipo.descripcion }}</p>
-                    <a href="#" class="btn  btn-primary">{{ equipo.grupo }}</a>
+                        <p>Jugadores</p>
+                        <ul>
+                            {% for jugador in  jugadores %}
+                                {% if jugador.equipo_id == equipo.id %}
+                                    <li>{{ jugador.nombre }}</li>
+                                {% endif %}
+                            {% endfor %}
+
+                            <a href="#" class="btn  btn-primary">{{ equipo.grupo }}</a>
+                        </ul>
                   </div>
                </div>
             </div>
        {% endfor %}
     </div>
+    </div>
+    </div>
+</div>
+</section>
 {% endblock %}
