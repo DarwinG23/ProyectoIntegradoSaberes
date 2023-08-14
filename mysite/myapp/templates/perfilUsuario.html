@@ -40,6 +40,92 @@
 {% endblock %}
 
 {% block contenido %}
+    <br>
+    <br>
+    <br>
+    <div class="card mb-3" style="max-width: 800px;">
+        <div class="row g-0">
+            <div class="col-md-3">
+                <img src="{% static 'img/0000usuario.png' %}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">ALEXANDER ANTONIO SÁNCHEZ AZUERO</h5>
+                    <p class="card-text">"Estudiante de la carrera de Computación, siempre en busca de emocionantes
+                        desafíos y nuevas oportunidades para ampliar mis habilidades. Aprendiendo de cada mentor."</p>
+                    <button type="button" class="btn btn-dark">Editar Descripción</button>
+                    <button type="button" class="btn btn-danger">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3><span class="badge btn btn-success">Área personal / Perfil</span></h3>
+    </div>
+    <br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h5 style="color: rgb(37, 37, 91);" card-title">Detalles del usuario</h5>
+                    <p class="card-text">
+                        <b>Edad: </b> 19 años <br>
+                        <b>Carrera:</b> Ingenieria en Computación <br>
+                        <b>Ciclo:</b> 2"do" Ciclo <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h5 style="color:rgb(37, 37, 91);"="card-title">Personal / Aplicación</h5>
+                    <p class="card-text">
+                        <b>Dirección de correo:</b>
+                        <br>
+                        alexander.a.sanchez@unl.edu.ec
+                        <br>
+                        <b>Equipo:</b>
+                        <br>
+                        Computación
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h5 style="color: rgb(37, 37, 91);""card-title">Preferencias</h5>
+                    <p class="card-text"><b>Equipo preferido a ganar:</b>
+                        <br>
+                        Carrera de Computación
+                        <br>
+                        <b>Jugador favorito:</b>
+                        <br>
+                        Alexander Sánchez
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h5 style="color: rgb(37, 37, 91);"="card-title">Privacidad y Políticas</h5>
+                    <p class="card-text">
+                        <b>Privacidad y Control de Datos:</b><br>
+                    <ul>
+                        <li>Los datos de los usuarios estarán protegidos por medidas de seguridad según el framework
+                            Django, previniendo accesos no autorizados, pérdida o alteración.</li>
+                        <li>La plataforma será gratuita para los miembros de la Universidad Nacional de Loja y permitirá
+                            crear y compartir publicaciones sobre campeonatos y eventos deportivos.</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
     <h1>Perfil de Usuario</h1>
     <ul>
          <li><a href="/autenticar"> subir video</a></li>
@@ -52,6 +138,7 @@
                 <p>{{ video.descripcion }}</p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allowfullscreen></iframe>
             </li>
+
         {% endfor %}
     </ul>
 {% endblock %}
