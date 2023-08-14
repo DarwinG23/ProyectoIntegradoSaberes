@@ -7,7 +7,7 @@ from .forms import *  #importa todos los formularios
 from .models import *  #importa todos los modelos
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from googleapiclient.discovery import build
 from django.conf import settings
 from googleapiclient.http import MediaFileUpload
@@ -191,6 +191,9 @@ def crear(request):
 def home(request):
     return render(request, 'index.html')
 
+def es_competidor(user):
+    return user.is_authenticated and hasattr(user, 'competidor')
+
 def about(request):
     return render(request, 'about.html')
 
@@ -333,6 +336,44 @@ def autenticar(request):
     )
 
     return redirect(authorization_url)
+
+
+@login_required
+def register_competidor(request):
+    if request.method == 'POST':
+        form = CompetidorRegistrationForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            temporada = form.cleaned_data['temporada']
+            equipo = form.cleaned_data['equipo']
+
+            # Obtener el usuario autenticado
+            user = request.user
+
+            # Crear un competidor utilizando los datos del usuario
+            competidor = form.save(commit=False)
+            competidor.username = user.username
+            competidor.password = user.password
+            competidor.first_name = user.first_name
+            competidor.last_name = user.last_name
+            competidor.email = user.email
+            competidor.is_staff = user.is_staff
+            competidor.is_active = user.is_active
+            competidor.date_joined = user.date_joined
+            competidor.last_login = user.last_login
+            competidor.is_superuser = user.is_superuser
+
+            # Asignar la temporada y equipo al competidor
+            competidor.temporada = temporada
+            competidor.equipo = equipo
+            competidor.save()
+
+            return redirect('home')  # Cambia 'home' al nombre correcto de la vista a la que deseas redirigir
+    else:
+        form = CompetidorRegistrationForm()
+    return render(request, 'register_competidor.html', {'form': form})
+
+
 
 
 

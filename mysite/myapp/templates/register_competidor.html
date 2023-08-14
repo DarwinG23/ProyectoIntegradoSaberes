@@ -1,0 +1,50 @@
+{%  extends 'base.html' %}
+{% block titulo %}Noticias{% endblock %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Grupos' %}">Grupos</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
+    </li>
+     {% if user.is_authenticated and user.is_staff %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Crear
+            </a>
+           <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
+               <li><a class="dropdown-item" href="/crearTemp">Temporada</a></li>
+              <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
+              <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
+             <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
+               <li><a class="dropdown-item" href="/crearDepo">Deporte</a></li>
+           </ul>
+       </li>
+    {% endif %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+        <h2>Registro de Competidor</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrarse como Competidor</button>
+    </form>
+{% endblock %}

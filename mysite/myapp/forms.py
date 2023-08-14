@@ -65,3 +65,9 @@ class SubirVideoForm(forms.Form):
     titulo = forms.CharField(max_length=100)
     descripcion = forms.CharField(widget=forms.Textarea)
     archivo = forms.FileField()
+
+
+class CompetidorRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Competidor
+        fields = ('equipo', 'temporada')

@@ -40,6 +40,7 @@
 {% endblock %}
 
 {% block contenido %}
+    {% if request.user.is_authenticated %}
     <br>
     <br>
     <br>
@@ -50,7 +51,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">ALEXANDER ANTONIO SÁNCHEZ AZUERO</h5>
+                    <h5 class="card-title">{{ user.username | upper }} </h5>
                     <p class="card-text">"Estudiante de la carrera de Computación, siempre en busca de emocionantes
                         desafíos y nuevas oportunidades para ampliar mis habilidades. Aprendiendo de cada mentor."</p>
                     <button type="button" class="btn btn-dark">Editar Descripción</button>
@@ -83,12 +84,15 @@
                     <p class="card-text">
                         <b>Dirección de correo:</b>
                         <br>
-                        alexander.a.sanchez@unl.edu.ec
+                        {{ user.email}}
                         <br>
+                        {% if user.is_competidor %}
+
                         <b>Equipo:</b>
                         <br>
-                        Computación
+                        {{ user.competidor.equipo.nombre }}
                         <br>
+                        {% endif %}
                     </p>
                 </div>
             </div>
@@ -101,9 +105,6 @@
                         <br>
                         Carrera de Computación
                         <br>
-                        <b>Jugador favorito:</b>
-                        <br>
-                        Alexander Sánchez
                     </p>
 
                 </div>
@@ -141,5 +142,6 @@
 
         {% endfor %}
     </ul>
+    {% endif %}
 {% endblock %}
 ```

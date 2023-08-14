@@ -1,6 +1,5 @@
 from datetime import time
-
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser, Permission, Group
 from django.db import models
 import random
 from random import shuffle
@@ -218,22 +217,40 @@ class Equipo(models.Model):
                lista_grupos[grupo_index].equipo_set.add(equipo)
 
 
-class Competidor(models.Model):
+class Competidor(AbstractUser):
     #Atributos
-    nombre = models.CharField(max_length=100, null=False, unique=False,verbose_name="Nombre")
     victorias = models.IntegerField(default=None, null=True, blank=True)
     derrotas = models.IntegerField(default=None, null=True, blank=True)
     empates = models.IntegerField(default=None, null=True, blank=True)
     sancionado = models.BooleanField(default=None, null=True, blank=True)
     partidosJugados = models.IntegerField(default=None, null=True, blank=True)
 
+    # Agrega related_name a las relaciones groups y user_permissions
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name='groups',
+        blank=True,
+        related_name='competidores_groups',
+        help_text='The groups this user belongs to.',
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name='user permissions',
+        blank=True,
+        related_name='competidores_user_permissions',
+        help_text='Specific permissions for this user.',
+    )
+
 
     #Relaciones
     equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE, null=True, blank=True)
     temporada = models.ForeignKey(Temporada, on_delete=models.CASCADE, null=True, blank=True)
 
+    class Meta:
+        db_table = 'competidor'
+
     def __str__(self):
-        return self.nombre + " - " + self.equipo.nombre
+        return self.username + " - " + self.equipo.nombre
 
 class Horario(models.Model):
     # Atributos
