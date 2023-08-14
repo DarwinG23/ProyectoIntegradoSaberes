@@ -1,5 +1,8 @@
 const getOptionChart1 = () => {
     return {
+        title: {
+            text: 'Rendimiento - General - Jugador'
+        },
         tooltip: {
             show: true,
             trigger: 'axis',
@@ -12,7 +15,7 @@ const getOptionChart1 = () => {
         xAxis: [
             {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
             }
         ],
         yAxis: [
@@ -31,13 +34,13 @@ const getOptionChart1 = () => {
 const getOptionChart2 = () => {
     return {
         title: {
-            text: 'Grupos'
+            text: 'Partido'
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+            data: ['Remates', 'Posesión', 'Pases', 'Faltas', 'Tarjetas Amarillas', 'Tarjetas Rojas']
         },
         grid: {
             left: '3%',
@@ -53,7 +56,7 @@ const getOptionChart2 = () => {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
         },
         yAxis: {
             type: 'value'
@@ -63,7 +66,7 @@ const getOptionChart2 = () => {
                 name: 'Email',
                 type: 'line',
                 stack: 'Total',
-                data: [120, 132, 101, 134, 90, 230, 210]
+                data: [190, 132, 160, 134, 150, 230, 210]
             },
             {
                 name: 'Union Ads',
@@ -101,7 +104,7 @@ const getOptionChart3 = () => {
         },
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
         },
         yAxis: {
             type: 'value'
@@ -117,6 +120,9 @@ const getOptionChart3 = () => {
 
 const getOptionChart4 = () => {
     return {
+          title: {
+                   text: 'Jugador'
+        },
         tooltip: {
             trigger: 'item'
         },
@@ -150,11 +156,11 @@ const getOptionChart4 = () => {
                     show: false
                 },
                 data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
+                    { value: 1048, name: 'Minutos Jugados' },
+                    { value: 735, name: 'Goles' },
+                    { value: 580, name: 'T/Amarillas' },
+                    { value: 200, name: 'T/Rojas' },
+                    { value: 300, name: 'Asistencias' }
                 ]
             }
         ]
