@@ -138,7 +138,7 @@ def crearGrup(request):
                 equipo.generar_Grupos(num_grupos, deporte)
             return redirect('/grupos')
 
-@login_required
+
 def verHorario(request):
     horarios = Horario.objects.all()
     competencias = Competencia.objects.all()
