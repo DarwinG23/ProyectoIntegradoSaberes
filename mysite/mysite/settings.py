@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'myapp',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -105,7 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -123,7 +129,12 @@ GOOGLE_OAUTH2_CLIENT_ID = '513877884838-9gknranj4i3di6vgd6unk260h3f4nb7s.apps.go
 GOOGLE_OAUTH2_CLIENT_SECRET = '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'
 
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '135705420576-ig467hebkt19s8887kgi8p3400vfkg87.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
+
+
+YOUTUBE_API_KEY = 'AIzaSyAZjL4h0IXRmOYC2fNmeY1TVGjk0mTRquM'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -132,10 +143,15 @@ import os
 STATIC_URL = '/myapp/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp/static')]
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_URL = 'http://127.0.0.1:5000/accounts/login/'
+LOGOUT_URL = 'http://127.0.0.1:5000'
 
 #Variable de redireccionamiento de login y logout
 LOGIN_REDIRECT_URL = '/'
