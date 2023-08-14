@@ -61,22 +61,38 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Dia Fecha</th>
+            <th>Dia</th>
             <th>Hora</th>
             <th>Encuentro</th>
             <th>Cancha</th>
           </tr>
         </thead>
-        <tbody>
-          {% for partido in horario.partido_set.all %}
-            <tr>
-              <td>{{ partido.numFecha }}</td>
-              <td>{{ partido.hora }}</td>
-              <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
-              <td>{{ partido.cancha }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
+            <tbody>
+              {% for partido in horario.partido_set.all %}
+                <tr>
+                  <td>
+                    {% if partido.numFecha == 1 %}
+                      Lunes
+                    {% elif partido.numFecha == 2 %}
+                      Martes
+                    {% elif partido.numFecha == 3 %}
+                      Miércoles
+                    {% elif partido.numFecha == 4 %}
+                      Jueves
+                    {% elif partido.numFecha == 5 %}
+                      Viernes
+                    {% elif partido.numFecha == 6 %}
+                      Sábado
+                    {% elif partido.numFecha == 7 %}
+                      Domingo
+                    {% endif %}
+                  </td>
+                  <td>{{ partido.hora }}</td>
+                  <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
+                  <td>{{ partido.cancha }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
       </table>
     </div>
   {% endfor %}
