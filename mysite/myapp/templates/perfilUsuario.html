@@ -6,7 +6,7 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item">
       <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
     </li>
     <li class="nav-item">
@@ -40,108 +40,93 @@
 {% endblock %}
 
 {% block contenido %}
-    {% if request.user.is_authenticated %}
-    <br>
-    <br>
-    <br>
-    <div class="card mb-3" style="max-width: 800px;">
-        <div class="row g-0">
-            <div class="col-md-3">
-                <img src="{% static 'img/0000usuario.png' %}" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ user.username | upper }} </h5>
-                    <p class="card-text">"Estudiante de la carrera de Computación, siempre en busca de emocionantes
-                        desafíos y nuevas oportunidades para ampliar mis habilidades. Aprendiendo de cada mentor."</p>
-                    <button type="button" class="btn btn-dark">Editar Descripción</button>
-                    <button type="button" class="btn btn-danger">Guardar</button>
+  <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container ">
+        <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img src="{% static 'img/homelo.png' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ user.username | upper }}</strong></h5>
+                        <p class="card-text">"Estudiante de la carrera de Computación, siempre en busca de emocionantes
+                            desafíos y nuevas oportunidades para ampliar mis habilidades. Aprendiendo de cada mentor."</p>
+                    </div>
                 </div>
             </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container ">
+         <div class="heading_container">
+           <h2>
+            Area Personal
+          </h2>
+         </div>
+             <br>
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-det" type="button" role="tab" aria-controls="nav-det" aria-selected="true"><h5 style="color: #0f0700">Detalles del usuario</h5></button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><h5 style="color: #0f0700">Personal/Aplicacion</h5></button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-pref" type="button" role="tab" aria-controls="nav-pref" aria-selected="false"><h5 style="color: #0f0700">Preferencias</h5></button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-priv" type="button" role="tab" aria-controls="nav-priv" aria-selected="false"><h5 style="color: #0f0700">Privacidad/Politicas</h5></button>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-det" role="tabpanel" aria-labelledby="nav-det-tab" tabindex="0">
+                  <br><b>ㅤEdad: </b> <br>ㅤㅤ19 años <br>
+                  <b>ㅤCarrera:</b> <br>ㅤㅤIngenieria en Computación <br>
+                  <b>ㅤCiclo:</b> <br>ㅤㅤ2"do" Ciclo <br>
+              </div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                  <br><b>ㅤDirección de correo:</b> <br>ㅤㅤ{{ user.email}}<br>
+                  <b>ㅤEquipo:</b> <br>ㅤㅤComputación <br>
+              </div>
+              <div class="tab-pane fade" id="nav-pref" role="tabpanel" aria-labelledby="nav-pref-tab" tabindex="0">
+                  <br><b>ㅤEquipo preferido a ganar:</b> <br>ㅤㅤCarrera de Computación<br>
+                  <b>ㅤJugador favorito:</b> <br>ㅤㅤAlexander Sánchez
+              </div>
+              <div class="tab-pane fade" id="nav-priv" role="tabpanel" aria-labelledby="nav-priv-tab" tabindex="0">
+                  <br><b>ㅤPrivacidad y Control de Datos:</b><br>
+                  <ul>
+                    <li>Los datos de los usuarios estarán protegidos por medidas de seguridad según el framework
+                        Django, previniendo accesos no autorizados, pérdida o alteración.</li>
+                    <li>La plataforma será gratuita para los miembros de la Universidad Nacional de Loja y permitirá
+                        crear y compartir publicaciones sobre campeonatos y eventos deportivos.</li>
+                  </ul>
+              </div>
+            </div>
+         </div>
+      </div>
+  </section>
+
+<section class="service_section layout_padding">
+    <div class="service_container">
+        <div class="container ">
+           <div class="heading_container">
+            <h2>
+            Videos subidos
+            </h2>
+           </div>
+                <ul>
+                {% for video in videos %}
+                <li>
+                  <h3>{{ video.titulo }}</h3>
+                  <p>{{ video.descripcion }}</p>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allowfullscreen></iframe>
+                </li>
+                {% endfor %}
+                </ul>
+            <ul>
+              <a class="btn btn-outline-dark" href="/autenticar" role="button">Subir Video</a>
+            </ul>
         </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <h3><span class="badge btn btn-success">Área personal / Perfil</span></h3>
-    </div>
-    <br>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                    <h5 style="color: rgb(37, 37, 91);" card-title">Detalles del usuario</h5>
-                    <p class="card-text">
-                        <b>Edad: </b> 19 años <br>
-                        <b>Carrera:</b> Ingenieria en Computación <br>
-                        <b>Ciclo:</b> 2"do" Ciclo <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                    <h5 style="color:rgb(37, 37, 91);"="card-title">Personal / Aplicación</h5>
-                    <p class="card-text">
-                        <b>Dirección de correo:</b>
-                        <br>
-                        {{ user.email}}
-                        <br>
-                        {% if user.is_competidor %}
-
-                        <b>Equipo:</b>
-                        <br>
-                        {{ user.competidor.equipo.nombre }}
-                        <br>
-                        {% endif %}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                    <h5 style="color: rgb(37, 37, 91);""card-title">Preferencias</h5>
-                    <p class="card-text"><b>Equipo preferido a ganar:</b>
-                        <br>
-                        Carrera de Computación
-                        <br>
-                    </p>
-
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                    <h5 style="color: rgb(37, 37, 91);"="card-title">Privacidad y Políticas</h5>
-                    <p class="card-text">
-                        <b>Privacidad y Control de Datos:</b><br>
-                    <ul>
-                        <li>Los datos de los usuarios estarán protegidos por medidas de seguridad según el framework
-                            Django, previniendo accesos no autorizados, pérdida o alteración.</li>
-                        <li>La plataforma será gratuita para los miembros de la Universidad Nacional de Loja y permitirá
-                            crear y compartir publicaciones sobre campeonatos y eventos deportivos.</li>
-                    </ul>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h1>Perfil de Usuario</h1>
-    <ul>
-         <li><a href="/autenticar"> subir video</a></li>
-    </ul>
-    <h2>Videos Subidos</h2>
-    <ul>
-        {% for video in videos %}
-            <li>
-                <h3>{{ video.titulo }}</h3>
-                <p>{{ video.descripcion }}</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allowfullscreen></iframe>
-            </li>
-
-        {% endfor %}
-    </ul>
-    {% endif %}
+</section>
 {% endblock %}
-```

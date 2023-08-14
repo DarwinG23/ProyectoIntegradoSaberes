@@ -44,125 +44,19 @@
 {% block contenido %}
     <!-- slider section -->
     <br><br>
-    <section class="slider_section" >
-      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-        <br><br><br>
-          <div class="carousel-item active">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="detail-box">
-                    <div class="img-box">
-                     <img src="{% static 'img/logo_render.png' %}" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/bg1.png' %}" class="d-block w-100" alt="...">
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="detail-box">
-                    <h1>
-                      ARCHITECT <br>
-                      BUILDER CONSTRUCTION <br>
-                      SERVICES
-                    </h1>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/bg2.png' %}" class="d-block w-100" alt="...">
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="detail-box">
-                    <h1>
-                      ARCHITECT <br>
-                      BUILDER CONSTRUCTION <br>
-                      SERVICES
-                    </h1>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="detail-box">
-                    <h1>
-                      ARCHITECT <br>
-                      BUILDER CONSTRUCTION <br>
-                      SERVICES
-                    </h1>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="detail-box">
-                    <h1>
-                      ARCHITECT <br>
-                      BUILDER CONSTRUCTION <br>
-                      SERVICES
-                    </h1>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/bg3.png' %}" class="d-block w-100" alt="...">
             </div>
           </div>
         </div>
-        <ol class="carousel-indicators">
-          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
-          <li data-target="#customCarousel1" data-slide-to="3"></li>
-          <li data-target="#customCarousel1" data-slide-to="4"></li>
-        </ol>
-      </div>
-    </section>
     <!-- end slider section -->
 
 
@@ -236,10 +130,7 @@
             <div class="box ">
               <div class="img-box">
                 <img src="{% static 'img/s4.png' %}" alt="">
-              </div>
-              <h5>
-                ㅤ
-              </h5>
+              </div><br>
               <a class="btn btn-outline-dark" href="{% url 'sports' %}" role="button">
                 Mas Deportes
               </a>
