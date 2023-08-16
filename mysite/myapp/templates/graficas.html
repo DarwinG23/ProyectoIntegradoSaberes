@@ -11,7 +11,7 @@
       <a class="nav-link" href="{% url 'ver Grupos' %}">Grupos</a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" href="{% url 'news' %}">Estadisticas</a>
+      <a class="nav-link" href="{% url 'graficas' %}">Estadisticas</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
@@ -42,21 +42,17 @@
 {% block contenido %}
  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
     <div class="row mt-5">
-        <div class="col-md-4 mt-2">
-            <h4>Add Data</h4>
-            <hr>
-
-            <form action="" method="POST">
-                {% csrf_token %}
-
-                {{ form }}
-
-                <input class="btn btn-success mt-2" type="submit" value="Add Data">
-
-            </form>
-
-        </div>
-
+       <!-- si el usuario esta logueado y es admin-->
+        {% if user.is_authenticated and user.is_staff %}
+            <div class="col-md-4 mt-2">
+                 <hr>
+                 <form action="" method="POST">
+                    {% csrf_token %}
+                     {{ form.ejecutar }}
+                    <input class="btn btn-success mt-2" type="submit" value="Actualizar">
+                 </form>
+            </div>
+        {% endif %}
         <div class="col-md-8">
             <canvas id="myChart" width="400" height="250"></canvas>
                 <script>

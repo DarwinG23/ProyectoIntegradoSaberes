@@ -179,11 +179,46 @@ class Grupo (models.Model):
                        partido.save()
 
 
-
         # Guardar el objeto Horario en la base de datos
         horario_obj.save()
 
+    def crearEstadisticas(self):
+        partidos = Partido.objects.all()
+        equipos = Equipo.objects.all()
+        for partido in partidos:
+            if partido.estado == "Finalizado" or partido.estado == "FINALIZADO":
+                equipo_local_baseDatos = Equipo.objects.get(nombre=partido.equipo_local)
+                equipo_visitante_baseDatos = Equipo.objects.get(nombre=partido.equipo_visitante)
 
+                equipo_local_baseDatos.partidosJugados += 1
+                equipo_visitante_baseDatos.partidosJugados += 1
+
+                if partido.marcador_local > partido.marcador_visitante:
+                    equipo_local_baseDatos.partidosGanados += 1
+                    equipo_local_baseDatos.puntos += 3
+                    equipo_visitante_baseDatos.partidosPerdidos += 1
+                elif partido.marcador_local < partido.marcador_visitante:
+                    equipo_local_baseDatos.partidosPerdidos += 1
+                    equipo_visitante_baseDatos.partidosGanados += 1
+                    equipo_visitante_baseDatos.puntos += 3
+                else:
+                    equipo_local_baseDatos.partidosEmpatados += 1
+                    equipo_visitante_baseDatos.partidosEmpatados += 1
+                    equipo_local_baseDatos.puntos += 1
+                    equipo_visitante_baseDatos.puntos += 1
+
+                equipo_local_baseDatos.save()
+                equipo_visitante_baseDatos.save()
+
+        for equipo in equipos:
+            if equipo.partidosJugados > 0:
+                if not Estadistica.objects.filter(category=equipo.nombre).exists():
+                    estadistica = Estadistica.objects.create(category=equipo.nombre, num_of_products=equipo.puntos)
+                    estadistica.save()
+                else:
+                    estadistica = Estadistica.objects.get(category=equipo.nombre)
+                    estadistica.value = equipo.puntos
+                    estadistica.save()
 
     def __str__(self):
         return self.nombre
@@ -193,6 +228,11 @@ class Equipo(models.Model):
     #Atributos
     nombre = models.CharField(max_length=100, null=False, unique=True,verbose_name="Nombre")
     descripcion = models.CharField(max_length=200)
+    puntos = models.IntegerField(default=0)
+    partidosJugados = models.IntegerField(default=0)
+    partidosGanados = models.IntegerField(default=0)
+    partidosPerdidos = models.IntegerField(default=0)
+    partidosEmpatados = models.IntegerField(default=0)
 
     #Relaciones
     temporada = models.ForeignKey(Temporada, on_delete=models.CASCADE, null=True, blank=True)
@@ -289,7 +329,7 @@ class Partido(models.Model):
         ('PAUSADO', 'pausado'),
     ]
 
-    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='PENDIENTE')
 
     #Relaciones
     Grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE, null=True, blank=True)
@@ -323,7 +363,7 @@ class Jugador(models.Model):
     def __str__(self):
         return self.nombre
 
-class Product(models.Model):
+class Estadistica(models.Model):
     category = models.CharField(max_length=100, null=False, blank=False)
     num_of_products = models.IntegerField()
 

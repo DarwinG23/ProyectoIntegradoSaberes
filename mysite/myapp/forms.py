@@ -75,11 +75,6 @@ class CompetidorRegistrationForm(forms.ModelForm):
         model = Competidor
         fields = ('equipo', 'temporada')
 
-class ProductForm(forms.ModelForm):
-    class Meta:
-        model = Product
-        fields = '__all__'
-        widgets = {
-            'category': forms.TextInput(attrs={'class': 'form-control'}),
-            'num_of_products': forms.TextInput(attrs={'class': 'form-control'}),
-        }
+class ProductForm(forms.Form):
+    ejecutar = forms.BooleanField(widget=forms.HiddenInput(), initial=True, required=False)
+
