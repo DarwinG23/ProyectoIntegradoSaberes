@@ -46,6 +46,7 @@ class CompetidorForm(forms.Form):
 class HorarioForm(forms.Form):
     deporte = forms.ModelChoiceField(queryset=Deporte.objects.all(), empty_label=None, label="Para el deporte:", required=True)
     numCanchas = forms.IntegerField(label="Numero de Canchas", min_value=1, max_value=50, required=True)
+    fechaInicio = forms.DateField(label="Fecha de inicio", required=True)
     horaInicio = forms.TimeField(label="Hora de inicio", required=True, widget=forms.TimeInput(format='%H:%M'))
     horaFin = forms.TimeField(label="Hora de fin", required=True, widget=forms.TimeInput(format='%H:%M'))
 

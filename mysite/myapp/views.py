@@ -103,7 +103,7 @@ def crearCompetidor(request):
 def crearHorario(request):
     equipos = Equipo.objects.all()
     grupos = Grupo.objects.all()
-    fecha = Partido.objects.aggregate(Max('numFecha'))['numFecha__max']
+    fecha = Partido.objects.aggregate(Max('fecha'))['fecha__max']
     context = {
         'fecha': fecha,
     }
@@ -114,10 +114,11 @@ def crearHorario(request):
         if form.is_valid():
             deporte = form.cleaned_data['deporte']
             numCanchas = form.cleaned_data['numCanchas']
+            fechaInicio = form.cleaned_data['fechaInicio']
             horaInicio = form.cleaned_data['horaInicio']
             horaFin = form.cleaned_data['horaFin']
             grupo = grupos.first()
-            grupo.generar_Partidos(deporte)
+            grupo.generar_Partidos(deporte, fechaInicio)
             grupo.generar_horario(numCanchas, deporte, horaInicio, horaFin)
             return redirect('/Horario')
 

@@ -1,4 +1,4 @@
-from datetime import time
+from datetime import time, timedelta
 from django.contrib.auth.models import User, AbstractUser, Permission, Group
 from django.db import models
 import random
@@ -72,8 +72,7 @@ class Grupo (models.Model):
     deporte = models.ForeignKey(Deporte, on_delete=models.DO_NOTHING, null=False, blank=False, default=None)
 
     #Metodos
-    def generar_Partidos(self, deporte):
-
+    def generar_Partidos(self, deporte, fechaInicio):
         grupos = Grupo.objects.filter(deporte=deporte)
 
         for grupo in grupos:
@@ -87,10 +86,7 @@ class Grupo (models.Model):
                 numero_equipos += 1
 
             partidos_a_crear = []
-            num_fecha = 1  # Inicializamos el número de fecha en 1
-
-            # Crear un diccionario para mantener el contador de fecha para cada equipo
-            num_fecha_por_equipo = {equipo: 1 for equipo in lista_equipos}
+            fecha_partido = fechaInicio  # Inicializamos la fecha del primer partido
 
             for i in range(numero_equipos - 1):
                 for j in range(i + 1, numero_equipos):
@@ -101,27 +97,19 @@ class Grupo (models.Model):
                         # Ignorar los partidos con el equipo "fantasma"
                         continue
 
-                    # Obtener el número de fecha para cada equipo
-                    fecha_local = num_fecha_por_equipo[equipo_local]
-                    fecha_visitante = num_fecha_por_equipo[equipo_visitante]
-
-                    # Crear el objeto Partido con el número de fecha y agregarlo a la lista
-                    partido = Partido(Grupo=grupo, numFecha=num_fecha, equipo_local=equipo_local,
+                    # Crear el objeto Partido con la fecha y agregarlo a la lista
+                    partido = Partido(Grupo=grupo, fecha=fecha_partido, equipo_local=equipo_local,
                                       equipo_visitante=equipo_visitante)
                     partidos_a_crear.append(partido)
 
-                    # Incrementar el contador de fecha para cada equipo
-                    num_fecha_por_equipo[equipo_local] += 1
-                    num_fecha_por_equipo[equipo_visitante] += 1
+                    fecha_partido += timedelta(days=1)  # Incrementar la fecha para el siguiente partido
 
-                    num_fecha += 1  # Incrementar el número de fecha general
             # Guardar todos los objetos Partido en la base de datos de una vez
             Partido.objects.bulk_create(partidos_a_crear)
 
-    def generar_horario(self, num_canchas, deporte,hora_inicio, hora_fin):
+    def generar_horario(self, num_canchas, deporte, hora_inicio, hora_fin):
         # Obtener todos los grupos de la base de datos
         grupos = Grupo.objects.filter(deporte=deporte)
-
 
         hora_inicio_entero = hora_inicio.hour
         hora_fin_entero = hora_fin.hour
@@ -129,24 +117,23 @@ class Grupo (models.Model):
         diferencia_horas = hora_fin_entero - hora_inicio_entero
 
         # Crear el objeto Horario y guardarlo en la base de datos
-        horario_obj = Horario.objects.create(numCanchas=num_canchas, deporte=deporte, horaInicio=hora_inicio, horaFin=hora_fin)
+        horario_obj = Horario.objects.create(numCanchas=num_canchas, deporte=deporte, horaInicio=hora_inicio,
+                                             horaFin=hora_fin)
 
         # Recorrer cada grupo y asignar horarios y números de cancha a sus partidos
         for idx, grupo in enumerate(grupos, start=1):
             partidos_grupo = list(grupo.partido_set.all())
             random.shuffle(partidos_grupo)
 
-
             # Crear un diccionario para mantener un seguimiento de las canchas disponibles por fecha
             canchas_por_fecha = {}
 
             # Asignar los partidos a las fechas y canchas disponibles
             for partido in partidos_grupo:
-                fecha_asignada = partido.numFecha
-
+                fecha_asignada = partido.hora
 
                 # Verificar si ya hay canchas asignadas para esa fecha
-                if fecha_asignada in canchas_por_fecha:#
+                if fecha_asignada in canchas_por_fecha:
                     canchas_disponibles = canchas_por_fecha[fecha_asignada]
                 else:
                     # Si no hay canchas asignadas para esa fecha, crear una lista de canchas disponibles
@@ -154,9 +141,12 @@ class Grupo (models.Model):
                     random.shuffle(canchas_disponibles)
                     canchas_por_fecha[fecha_asignada] = canchas_disponibles
 
-                # Asignar la primera cancha disponible para el partido en la fecha asignada
-                cancha_asignada = canchas_disponibles.pop(0)
-
+                # Verificar si hay canchas disponibles antes de intentar eliminar una
+                if canchas_disponibles:
+                    cancha_asignada = canchas_disponibles.pop(0)
+                else:
+                    cancha_asignada = 1
+                    pass
 
                 # Agregar el partido a la fecha y cancha asignada
                 partido.cancha = cancha_asignada
@@ -164,15 +154,31 @@ class Grupo (models.Model):
 
                 while hora_inicio_entero <= hora_fin_entero:
                     hora_actual = time(hour=hora_inicio_entero)
-                    partidos_misma_fecha_hora = Partido.objects.filter(numFecha=fecha_asignada, hora=hora_actual)
+                    partidos_misma_fecha_hora = Partido.objects.filter(fecha=fecha_asignada, hora=hora_actual)
                     if len(partidos_misma_fecha_hora) < num_canchas:
-                         # Crear objeto time a partir del entero
-                        hora_python = time(hora_actual.hour, hora_actual.minute,hora_actual.second)  # Crear objeto time de Python
+                        # Crear objeto time a partir del entero
+                        hora_python = time(hora_actual.hour, hora_actual.minute,
+                                           hora_actual.second)  # Crear objeto time de Python
                         partido.hora = hora_python
                         break
                     else:
                         hora_inicio_entero += 1
                 partido.save()
+
+        for idx, grupo in enumerate(grupos, start=1):
+            # Obtener todos los partidos del grupo
+              partidos_grupo = list(grupo.partido_set.all())
+              for partido in partidos_grupo:
+                   fecha_asignada = partido.fecha
+                   hora_asignada = partido.hora
+                   cancha_asignada = partido.cancha
+                   partidos_misma_fecha_hora = Partido.objects.filter(fecha=fecha_asignada, hora=hora_asignada)
+
+                   if len(partidos_misma_fecha_hora) >= num_canchas:
+                       partido.hora = time(hora_asignada.hour + 1, hora_asignada.minute, hora_asignada.second)
+                       partido.save()
+
+
 
         # Guardar el objeto Horario en la base de datos
         horario_obj.save()
@@ -267,9 +273,23 @@ class Horario(models.Model):
 
 class Partido(models.Model):
     #Atributos
-    numFecha = models.IntegerField(verbose_name="Numero de fecha", null=True, blank=False)
+    fecha = models.DateField(verbose_name="Fecha", null=True, blank=True, default=None, unique=False)
     hora = models.TimeField(verbose_name="Hora", null=True, blank=True, default=None, unique=False)
     cancha = models.IntegerField(verbose_name="Numero de cancha", null=True, blank=True)
+    marcador_local = models.IntegerField(verbose_name="Marcador local", null=True, blank=True, default='0')
+    marcador_visitante = models.IntegerField(verbose_name="Marcador visitante", null=True, blank=True, default='0')
+
+    ESTADO_CHOICES = [
+        ('EN JUEGO', 'En juego'),
+        ('FINALIZADO', 'Finalizado'),
+        ('PENDIENTE', 'Pendiente'),
+        ('CANCELADO', 'descnaso'),
+        ('DESCANSO', 'descanso'),
+        ('APLAZADO', 'aplazado'),
+        ('PAUSADO', 'pausado'),
+    ]
+
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
 
     #Relaciones
     Grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE, null=True, blank=True)

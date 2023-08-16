@@ -57,39 +57,25 @@
 <div class="tab-content" id="horarios-tab-content">
   {% for horario in horarios %}
     <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="horario-{{ horario.id }}" role="tabpanel" aria-labelledby="horario-{{ horario.id }}-tab" tabindex="0">
-        <strong><p style="color: #0f0700">Numero de canchas: {{ horario.numCanchas }}</p></strong>
+        <strong><p style="color: #0f0700">Número de canchas: {{ horario.numCanchas }}</p></strong>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Dia</th>
+            <th>Fecha</th>
             <th>Hora</th>
             <th>Encuentro</th>
             <th>Cancha</th>
+            <th>Estado</th>
           </tr>
         </thead>
             <tbody>
               {% for partido in horario.partido_set.all %}
                 <tr>
-                  <td>
-                    {% if partido.numFecha == 1 %}
-                      Lunes
-                    {% elif partido.numFecha == 2 %}
-                      Martes
-                    {% elif partido.numFecha == 3 %}
-                      Miércoles
-                    {% elif partido.numFecha == 4 %}
-                      Jueves
-                    {% elif partido.numFecha == 5 %}
-                      Viernes
-                    {% elif partido.numFecha == 6 %}
-                      Sábado
-                    {% elif partido.numFecha == 7 %}
-                      Domingo
-                    {% endif %}
-                  </td>
+                  <td>{{ partido.fecha }}</td>
                   <td>{{ partido.hora }}</td>
                   <td>{{ partido.equipo_local }} vs {{ partido.equipo_visitante }}</td>
                   <td>{{ partido.cancha }}</td>
+                    <td>{{ partido.estado }} | {{ partido.marcador_local}} - {{ partido.marcador_visitante }}</td>
                 </tr>
               {% endfor %}
             </tbody>
