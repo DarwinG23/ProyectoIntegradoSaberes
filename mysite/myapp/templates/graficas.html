@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block barra %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sports' %}">Deportes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Grupos' %}">Grupos</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'news' %}">Estadisticas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ver Horario' %}">Horarios</a>
+    </li>
+     {% if user.is_authenticated and user.is_staff %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Crear
+            </a>
+           <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/crearComp">Competencia</a></li>
+               <li><a class="dropdown-item" href="/crearTemp">Temporada</a></li>
+              <li><a class="dropdown-item" href="/crearHorario">Horario</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/crearJug">Jugador</a></li>
+              <li><a class="dropdown-item" href="/crearEqui">Equipo</a></li>
+             <li><a class="dropdown-item" href="/crearGrup">Grupo</a></li>
+               <li><a class="dropdown-item" href="/crearDepo">Deporte</a></li>
+           </ul>
+       </li>
+    {% endif %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about' %}"> Acerca de</a>
+    </li>
+{% endblock %}
+
+
+{% block contenido %}
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
+    <div class="row mt-5">
+        <div class="col-md-4 mt-2">
+            <h4>Add Data</h4>
+            <hr>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {{ form }}
+
+                <input class="btn btn-success mt-2" type="submit" value="Add Data">
+
+            </form>
+
+        </div>
+
+        <div class="col-md-8">
+            <canvas id="myChart" width="400" height="250"></canvas>
+                <script>
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [{% for product in products %}  '{{ product.category }}',  {% endfor %}],
+                        datasets: [{
+                            label: '# of Products',
+                            data: [{% for product in products %}  {{ product.num_of_products }},  {% endfor %}],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.8)',
+                                'rgba(54, 162, 235, 0.8)',
+                                'rgba(255, 206, 86, 0.8)',
+                                'rgba(75, 192, 192, 0.8)',
+                                'rgba(153, 102, 255, 0.8)',
+                                'rgba(255, 159, 64, 0.8)',
+                                'rgba(240, 120, 50, 0.8)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(240, 120, 50, 1)',
+
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                </script>
+        </div>
+    </div>
+
+{% endblock %}

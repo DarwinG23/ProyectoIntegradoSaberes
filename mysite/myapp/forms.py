@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 
 
 
+
+
 class CompetenciaForm( forms.Form ):
     nombre = forms.CharField( label='Nombre', max_length=50 )
     descripcion = forms.CharField( label='Descripcion', max_length=200)
@@ -72,3 +74,12 @@ class CompetidorRegistrationForm(forms.ModelForm):
     class Meta:
         model = Competidor
         fields = ('equipo', 'temporada')
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            'category': forms.TextInput(attrs={'class': 'form-control'}),
+            'num_of_products': forms.TextInput(attrs={'class': 'form-control'}),
+        }

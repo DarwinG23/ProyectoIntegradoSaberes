@@ -374,6 +374,23 @@ def register_competidor(request):
     else:
         form = CompetidorRegistrationForm()
     return render(request, 'register_competidor.html', {'form': form})
+def grafica(request):
+    products = Product.objects.all()
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('graficas')
+    else:
+        form = ProductForm()
+
+    context = {
+        "products": products,
+        "form": form
+    }
+
+    return render(request, 'graficas.html', context)
 
 
 

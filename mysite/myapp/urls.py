@@ -31,4 +31,5 @@ urlpatterns = [
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('registerCompe/', views.register_competidor, name='register_competidor'),
+    path('graficas/', views.grafica, name='graficas'),
 ]
